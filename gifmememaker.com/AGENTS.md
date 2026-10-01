@@ -8,6 +8,31 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+## Deployment
+
+The site is 100% static (Astro SSG → `dist/`) and deploys to **Cloudflare Workers static assets** (config: `wrangler.jsonc`, no Worker script — assets only).
+
+| Command | Action |
+| --- | --- |
+| `npm run deploy` | Build `dist/` + deploy to Cloudflare |
+| `npm run deploy:dry` | Validate the wrangler config without deploying |
+| `npm run cf:preview` | Build + serve the production bundle locally via `wrangler dev` (port 8787) |
+
+First-time setup:
+
+```
+npx wrangler login
+npm run deploy
+```
+
+Notes:
+
+- **Live URL: `https://gifmememaker.gifmememaker.workers.dev`** (worker `gifmememaker`, workers.dev subdomain `gifmememaker`, version `f4eaabd6-c4c1-4e9a-baf9-0b06ac3acc41`, deployed 2026-10-01).
+- Redeploy any time with `npm run deploy` (requires `npx wrangler login` once per machine).
+- Until `gifmememaker.com` is purchased, attach the domain in Cloudflare dashboard → Workers & Pages → `gifmememaker` → Domains & Routes (domain DNS must be on Cloudflare).
+- Unknown URLs serve `dist/404.html` via `assets.not_found_handling: "404-page"` in `wrangler.jsonc`.
+- No server runtime is needed: the meme studio (GIF/video/PNG export) runs entirely client-side. Workers was chosen over Pages because Cloudflare now directs new projects to Workers.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build
