@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import MemeStudio from '../components/MemeStudio.astro';
+import TemplateGallery from '../components/TemplateGallery.astro';
+import FeatureComparison from '../components/FeatureComparison.astro';
+import SeoContent from '../components/SeoContent.astro';
+import FAQSection from '../components/FAQSection.astro';
+import Footer from '../components/Footer.astro';
+import { FAQS } from '../data/site';
+
+const TITLE = 'Meme Maker Online - Free AI Meme Maker | gifmememaker.com';
+const DESCRIPTION =
+  'Free meme maker online with AI captions, video meme maker, GIF meme maker and 70+ templates. Make memes free in seconds - no signup, no downloads.';
+
+// FAQPage schema mirrors the questions rendered by FAQSection.astro.
+// `text` is HTML-wrapped in <p> tags to match Google's FAQ structured-data format.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: `<p>${faq.a}</p>`,
+    },
+  })),
+};
+---
+
+<Layout
+  title={TITLE}
+  description={DESCRIPTION}
+  path="/"
+  jsonLd={[faqSchema]}
+>
+  <Header />
+  <main>
+    <Hero />
+    <MemeStudio />
+    <TemplateGallery />
+    <FeatureComparison />
+    <SeoContent />
+    <FAQSection />
+  </main>
+  <Footer />
+</Layout>

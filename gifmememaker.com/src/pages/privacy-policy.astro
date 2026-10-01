@@ -1,0 +1,134 @@
+---
+import ContentPage from '../components/ContentPage.astro';
+import { SITE_URL } from '../data/site';
+
+const TITLE = 'Privacy Policy | gifmememaker.com Meme Maker';
+const DESCRIPTION =
+  'How gifmememaker.com handles your data: your uploads never leave your browser, we store no files, and we never sell personal information.';
+const PATH = '/privacy-policy/';
+const EMAIL = 'support@gifmememaker.com';
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Privacy Policy', item: `${SITE_URL}${PATH}` },
+  ],
+};
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Privacy Policy — gifmememaker.com',
+  url: `${SITE_URL}${PATH}`,
+  description: DESCRIPTION,
+  inLanguage: 'en',
+  dateModified: '2026-09-30',
+};
+---
+
+<ContentPage
+  title={TITLE}
+  description={DESCRIPTION}
+  path={PATH}
+  eyebrow="Legal"
+  h1="Privacy Policy"
+  updated="September 30, 2026"
+  jsonLd={[breadcrumb, pageSchema]}
+>
+  <p>
+    This Privacy Policy explains how gifmememaker.com ("we", "us", "our") treats information when you use our
+    <strong>meme maker</strong> at gifmememaker.com. The short version: the tool is built so that we
+    <strong>never receive your media</strong>, and we do not sell personal information. The long version is
+    below.
+  </p>
+
+  <h2>Information We Collect</h2>
+  <p>We collect as little as possible. In practice, that means:</p>
+  <ul>
+    <li><strong>No account data.</strong> There is no signup, so we never ask for your name, email address, password or social login.</li>
+    <li><strong>No uploaded media.</strong> Your images, GIFs and videos are processed locally in your browser and are never transmitted to us.</li>
+    <li><strong>No payment data.</strong> Optional Pro purchases, if any, are handled by the payment provider — card details never touch our servers.</li>
+    <li><strong>Standard technical logs.</strong> Like most websites, our hosting provider may record basic request metadata (IP address, browser type, time of request) for security and abuse prevention. These logs are not linked to your memes.</li>
+  </ul>
+
+  <h2>Your Uploads & Media Files</h2>
+  <p>
+    All rendering, trimming, frame extraction, AI caption suggestions and GIF/video encoding happen
+    <strong>entirely on your device</strong> using browser technologies (Canvas, WebCodecs, client-side
+    encoders). Files you drop into the studio stay in your browser's memory until you close the tab or
+    reload the page. We cannot read, access, moderate or recover your media — by design, not by policy
+    alone. Anything you export is your own copy, stored only where you save it.
+  </p>
+
+  <h2>Cookies and Local Storage</h2>
+  <p>
+    We do not use advertising or cross-site tracking cookies. We use a small amount of
+    <strong>browser local storage</strong> to remember your preferences on your own device, such as:
+  </p>
+  <ul>
+    <li>your light/dark theme choice,</li>
+    <li>studio settings like watermark text, position and opacity, and</li>
+    <li>the "Free Features Only" mode toggle.</li>
+  </ul>
+  <p>
+    This data never leaves your browser. You can clear it at any time via your browser's site-data
+    settings, which resets the tool to its defaults.
+  </p>
+
+  <h2>Third-Party Services</h2>
+  <p>
+    We load web fonts (Google Fonts) to display the site consistently. When your browser fetches these
+    assets, the provider receives standard request information such as your IP address under its own
+    privacy policy. We do not embed third-party advertising networks, social tracking pixels or session
+    replay tools in the meme maker.
+  </p>
+
+  <h2>How We Use Information</h2>
+  <p>
+    Any information we do collect (typically anonymous, aggregated technical data) is used only to operate,
+    secure and improve the site — for example, to diagnose crashes, prevent abuse and understand which
+    features of the <strong>online meme maker</strong> are used most. We do not sell, rent or trade
+    personal information, and we do not build advertising profiles.
+  </p>
+
+  <h2>Data Security</h2>
+  <p>
+    Because the architecture minimizes data collection, there is very little stored to protect. Site
+    traffic is served over HTTPS, and the preferences we do keep are scoped to your own browser. No system
+    is perfectly secure, but our strongest security measure is simply never receiving your files in the
+    first place.
+  </p>
+
+  <h2>Children's Privacy</h2>
+  <p>
+    The <strong>free meme maker app</strong> is suitable for general audiences, and we do not knowingly
+    collect personal information from children under 13 (or the equivalent minimum age in your
+    jurisdiction). If you believe a child has provided us personal information through the site, contact
+    us and we will remove it promptly.
+  </p>
+
+  <h2>Your Rights</h2>
+  <p>
+    Depending on your region (for example GDPR in Europe or CCPA in California), you may have the right to
+    request access to, correction of, or deletion of personal data we hold about you, and to object to or
+    restrict certain processing. Since we hold almost no personal data, most requests can be answered
+    immediately — clearing your browser's site data removes everything we could possibly have stored on
+    your device. To exercise any right, email us at <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
+  </p>
+
+  <h2>Changes to This Policy</h2>
+  <p>
+    We may update this Privacy Policy as the product evolves. Material changes will be posted on this page
+    with an updated "Last updated" date. Continued use of the <strong>meme maker online</strong> after
+    changes are posted constitutes acceptance of the revised policy.
+  </p>
+
+  <h2>Contact Us</h2>
+  <p>
+    Questions about privacy? Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a> or visit the
+    <a href="/contact-us/">contact page</a>. You can also read our
+    <a href="/terms-and-conditions/">Terms and Conditions</a>.
+  </p>
+</ContentPage>

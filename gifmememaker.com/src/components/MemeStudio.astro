@@ -1,0 +1,521 @@
+---
+---
+
+<section id="studio" class="py-12 sm:py-16 bg-[#fafafa] dark:bg-[#0a0a0a] transition-colors duration-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Section Header (Geist Spec) -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-6 border-b border-[#ebebeb] dark:border-[#222222] gap-4">
+      <div>
+        <div class="font-mono-eyebrow text-[#0070f3] dark:text-[#3291ff] mb-2 flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+          </svg>
+          gifmememaker.com Interactive Studio
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-[#171717] dark:text-white tracking-[-0.03em] flex items-center gap-2">
+          <span>AI & GIF Meme Generator Studio</span>
+        </h2>
+      </div>
+
+      <!-- Free vs All Features Toggle & Canvas Aspect Ratio Selector -->
+      <div class="flex flex-wrap items-center gap-3">
+        <!-- Filter Toggle: Free Features Only -->
+        <label class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-[#111111] border border-[#ebebeb] dark:border-[#222222] text-xs font-semibold cursor-pointer shadow-xs">
+          <input type="checkbox" id="chk-free-only-mode" class="rounded accent-[#0070f3] w-3.5 h-3.5" />
+          <span class="text-[#0070f3] dark:text-[#3291ff]">Free Features Only</span>
+        </label>
+
+        <div class="flex items-center gap-1 bg-white dark:bg-[#111111] px-2.5 py-1.5 rounded-md border border-[#ebebeb] dark:border-[#222222]">
+          <span class="text-xs font-mono text-[#8f8f8f]" id="canvas-dim-indicator">600 x 600px</span>
+        </div>
+        
+        <div class="inline-flex rounded-md p-1 bg-white dark:bg-[#111111] border border-[#ebebeb] dark:border-[#222222] shadow-xs">
+          <button data-aspect="auto" class="aspect-btn active-ratio px-2.5 py-1 text-xs font-medium rounded-sm text-[#171717] dark:text-white bg-[#fafafa] dark:bg-[#1a1a1a] shadow-xs">Auto</button>
+          <button data-aspect="1:1" class="aspect-btn px-2.5 py-1 text-xs font-medium rounded-sm text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white transition-colors">1:1</button>
+          <button data-aspect="16:9" class="aspect-btn px-2.5 py-1 text-xs font-medium rounded-sm text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white transition-colors">16:9</button>
+          <button data-aspect="9:16" class="aspect-btn px-2.5 py-1 text-xs font-medium rounded-sm text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white transition-colors">9:16</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Studio Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Studio Left Column: Canvas Preview Area (7 cols) -->
+      <div class="lg:col-span-7 flex flex-col items-center">
+        <!-- Canvas Container Card (Geist Spec) -->
+        <div class="w-full bg-white dark:bg-[#111111] border border-[#ebebeb] dark:border-[#222222] rounded-xl p-4 sm:p-6 shadow-sm flex flex-col items-center relative overflow-hidden group">
+          
+          <!-- Live Canvas Wrapper -->
+          <div id="canvas-container" class="w-full max-w-lg aspect-square bg-[#0a0a0a] rounded-lg border border-[#222222] flex items-center justify-center relative overflow-hidden shadow-inner group">
+            
+            <!-- Hidden native video/image elements for engine processing -->
+            <video id="source-video" class="hidden" playsinline loop crossorigin="anonymous" muted></video>
+            <img id="source-image" class="hidden" crossorigin="anonymous" src="/assets/memes/blackbeard writing meme.png" />
+
+            <!-- Main Render Canvas -->
+            <canvas id="meme-canvas" class="max-w-full max-h-[460px] object-contain cursor-move rounded"></canvas>
+
+            <!-- Initial Upload Overlay Dropzone -->
+            <div id="upload-overlay" class="absolute inset-0 bg-[#0a0a0a]/90 backdrop-blur-xs flex flex-col items-center justify-center p-6 text-center cursor-pointer transition-opacity z-20">
+              <input type="file" id="file-input" accept="image/*,video/*,.gif" class="hidden" />
+              <div class="w-14 h-14 rounded-full bg-[#171717] border border-[#333333] flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
+                <svg class="w-7 h-7 text-[#0070f3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                </svg>
+              </div>
+              <h3 class="text-base font-semibold text-white mb-1">Upload Image, GIF or Video</h3>
+              <p class="text-xs text-[#a1a1a1] max-w-xs mb-4">Supports GIF, MP4, WebM, PNG, JPG files</p>
+              <div class="flex items-center gap-2">
+                <span class="px-4 py-2 rounded-full bg-[#0070f3] text-white text-xs font-semibold hover:bg-[#0761d1] transition-all shadow-sm">Browse Local Files</span>
+                <button type="button" id="sample-demo-btn" class="px-3.5 py-2 rounded-full bg-[#222222] text-white border border-[#333333] text-xs font-medium hover:bg-[#333333] transition-all">Load Sample Meme</button>
+              </div>
+            </div>
+
+            <!-- Canvas Toast & Encoding Progress Modal -->
+            <div id="studio-toast" class="absolute top-4 left-1/2 -translate-x-1/2 px-3.5 py-1.5 rounded-full bg-[#171717]/90 text-white text-xs font-medium backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 border border-[#333333] z-30">
+              Canvas Ready
+            </div>
+
+            <div id="export-progress-bar" class="absolute inset-0 bg-[#0a0a0a]/95 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center opacity-0 pointer-events-none transition-opacity duration-200 z-40">
+              <div class="w-12 h-12 rounded-full border-2 border-[#0070f3] border-t-transparent animate-spin mb-4"></div>
+              <h4 class="text-base font-bold text-white mb-1">Encoding GIF File...</h4>
+              <p id="progress-percent" class="font-mono text-sm text-[#0070f3] font-semibold mb-3">0%</p>
+              <div class="w-48 h-1.5 bg-[#222222] rounded-full overflow-hidden">
+                <div id="progress-fill" class="h-full bg-[#0070f3] w-0 transition-all duration-150"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video / GIF Timeline Controls -->
+          <div class="w-full mt-4 pt-4 border-t border-[#ebebeb] dark:border-[#222222] flex flex-col gap-3">
+            <div class="flex items-center justify-between gap-3">
+              <!-- Play / Pause Button -->
+              <button id="btn-play-pause" class="w-9 h-9 rounded-[6px] bg-[#171717] dark:bg-white text-white dark:text-[#171717] flex items-center justify-center hover:opacity-90 transition-all shrink-0">
+                <svg id="icon-play" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg id="icon-pause" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              </button>
+
+              <!-- Timeline Scrubber -->
+              <div class="flex-1 flex items-center gap-2">
+                <span id="current-time" class="font-mono text-xs text-[#8f8f8f]">00:00</span>
+                <input type="range" id="timeline-scrubber" min="0" max="100" value="0" step="0.1" class="w-full h-1.5 bg-[#ebebeb] dark:bg-[#222222] rounded-lg appearance-none cursor-pointer accent-[#0070f3]" />
+                <span id="duration-time" class="font-mono text-xs text-[#8f8f8f]">00:03</span>
+              </div>
+
+              <!-- Rotate / Flip / Reset Buttons -->
+              <div class="flex items-center gap-1">
+                <button id="btn-rotate-90" title="Rotate 90°" class="p-2 rounded-[6px] text-[#8f8f8f] hover:text-[#171717] dark:hover:text-white hover:bg-[#ebebeb]/50 dark:hover:bg-[#1a1a1a] transition-all">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                </button>
+                <button id="btn-flip-h" title="Flip Horizontal" class="px-2 py-1.5 rounded-[6px] text-[10px] font-mono text-[#8f8f8f] hover:text-[#171717] dark:hover:text-white hover:bg-[#ebebeb]/50 dark:hover:bg-[#1a1a1a] transition-all">H</button>
+                <button id="btn-flip-v" title="Flip Vertical" class="px-2 py-1.5 rounded-[6px] text-[10px] font-mono text-[#8f8f8f] hover:text-[#171717] dark:hover:text-white hover:bg-[#ebebeb]/50 dark:hover:bg-[#1a1a1a] transition-all">V</button>
+                <button id="btn-reset-canvas" title="Reset All" class="px-2 py-1.5 rounded-[6px] text-[10px] font-mono text-[#8f8f8f] hover:text-[#171717] dark:hover:text-white hover:bg-[#ebebeb]/50 dark:hover:bg-[#1a1a1a] transition-all">RESET</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Keyboard Shortcuts Bar -->
+        <div class="w-full mt-3 flex items-center justify-between text-[11px] text-[#8f8f8f] dark:text-[#666666] px-2 font-mono">
+          <span>Drag text boxes to move · Double-click a text box to edit</span>
+          <span>Space: Play/Pause · Drag & drop files anywhere on this section</span>
+        </div>
+      </div>
+
+      <!-- Studio Right Column: Inspector & Controls (5 cols) -->
+      <div class="lg:col-span-5 w-full bg-white dark:bg-[#111111] border border-[#ebebeb] dark:border-[#222222] rounded-xl p-4 sm:p-5 shadow-sm">
+        
+        <!-- Inspector Tabs Header -->
+        <div class="flex items-center gap-1 border-b border-[#ebebeb] dark:border-[#222222] pb-3 mb-5 overflow-x-auto scrollbar-none">
+          <button data-tab="tab-text" class="tab-btn active-tab px-2.5 py-1.5 rounded-[6px] text-xs font-semibold text-[#171717] dark:text-white bg-[#fafafa] dark:bg-[#1a1a1a] border border-[#ebebeb] dark:border-[#333333] transition-all shrink-0">
+            Text & Meme
+          </button>
+          <button data-tab="tab-ai" class="tab-btn px-2.5 py-1.5 rounded-[6px] text-xs font-semibold text-[#7928ca] dark:text-[#d8ccf1] transition-all shrink-0 flex items-center gap-1">
+            <span>🤖 AI Captions</span>
+          </button>
+          <button data-tab="tab-trim" class="tab-btn px-2.5 py-1.5 rounded-[6px] text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white transition-all shrink-0">
+            Trim & Speed
+          </button>
+          <button data-tab="tab-watermark-bg" class="tab-btn px-2.5 py-1.5 rounded-[6px] text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white transition-all shrink-0">
+            Watermark & BG
+          </button>
+          <button data-tab="tab-export" class="tab-btn px-2.5 py-1.5 rounded-[6px] text-xs font-semibold text-[#0070f3] dark:text-[#3291ff] hover:opacity-90 transition-all shrink-0">
+            Export
+          </button>
+        </div>
+
+        <!-- TAB CONTENT 1: TEXT & MEMES -->
+        <div id="tab-text" class="tab-panel flex flex-col gap-4">
+          <!-- Top Meme Text -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="font-mono-eyebrow text-[11px] text-[#4d4d4d] dark:text-[#a1a1a1]">Top Text</label>
+              <span class="text-[10px] text-[#0070f3] font-mono">⚡ FREE</span>
+            </div>
+            <input type="text" id="input-top-text" placeholder="ME WRITING CODE..." value="ME WRITING CODE..." class="w-full px-3 py-2 text-sm rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white focus:outline-none focus:border-[#0070f3] transition-colors" />
+          </div>
+
+          <!-- Bottom Meme Text -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="font-mono-eyebrow text-[11px] text-[#4d4d4d] dark:text-[#a1a1a1]">Bottom Text</label>
+              <span class="text-[10px] text-[#0070f3] font-mono">⚡ FREE</span>
+            </div>
+            <input type="text" id="input-bottom-text" placeholder="VS ME WRITING DOCUMENTATION" value="VS ME WRITING DOCUMENTATION" class="w-full px-3 py-2 text-sm rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white focus:outline-none focus:border-[#0070f3] transition-colors" />
+          </div>
+
+          <!-- Font Style & Size Grid -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-mono-eyebrow text-[11px] text-[#4d4d4d] dark:text-[#a1a1a1] mb-1.5">Font Style</label>
+              <select id="select-font-family" class="w-full px-3 py-2 text-xs rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white focus:outline-none focus:border-[#0070f3]">
+                <option value="Impact">Classic Impact</option>
+                <option value="Geist">Geist Sans</option>
+                <option value="Anton">Anton Bold</option>
+                <option value="Oswald">Oswald Meme</option>
+                <option value="Comic Neue">Comic Neue</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-mono-eyebrow text-[11px] text-[#4d4d4d] dark:text-[#a1a1a1] mb-1.5">Size (<span id="lbl-font-size">36</span>px)</label>
+              <input type="range" id="slider-font-size" min="16" max="80" value="36" class="w-full h-1.5 bg-[#ebebeb] dark:bg-[#222222] rounded-lg appearance-none cursor-pointer accent-[#0070f3] mt-2" />
+            </div>
+          </div>
+
+          <!-- Colors & Stroke Row -->
+          <div class="grid grid-cols-3 gap-3">
+            <div>
+              <label class="block font-mono-eyebrow text-[10px] text-[#4d4d4d] dark:text-[#a1a1a1] mb-1">Fill Color</label>
+              <div class="flex items-center gap-2">
+                <input type="color" id="color-text-fill" value="#ffffff" class="w-8 h-8 rounded border-0 cursor-pointer bg-transparent" />
+                <span id="lbl-color-fill" class="text-xs font-mono text-[#8f8f8f]">#FFF</span>
+              </div>
+            </div>
+            <div>
+              <label class="block font-mono-eyebrow text-[10px] text-[#4d4d4d] dark:text-[#a1a1a1] mb-1">Stroke</label>
+              <div class="flex items-center gap-2">
+                <input type="color" id="color-text-stroke" value="#000000" class="w-8 h-8 rounded border-0 cursor-pointer bg-transparent" />
+                <span id="lbl-color-stroke" class="text-xs font-mono text-[#8f8f8f]">#000</span>
+              </div>
+            </div>
+            <div>
+              <label class="block font-mono-eyebrow text-[10px] text-[#4d4d4d] dark:text-[#a1a1a1] mb-1">Stroke W</label>
+              <input type="range" id="slider-stroke-width" min="0" max="10" value="3" class="w-full h-1.5 bg-[#ebebeb] dark:bg-[#222222] rounded-lg appearance-none cursor-pointer accent-[#0070f3] mt-2" />
+            </div>
+          </div>
+
+          <!-- Caption Banner & Style Options -->
+          <div class="space-y-2 pt-2 border-t border-[#ebebeb] dark:border-[#222222]">
+            <label class="flex items-center justify-between cursor-pointer text-xs text-[#171717] dark:text-white p-2 rounded bg-[#fafafa] dark:bg-[#161616]">
+              <span class="font-medium">Top Caption Banner (Twitter/Reddit Style)</span>
+              <input type="checkbox" id="chk-caption-banner" class="rounded accent-[#0070f3] w-4 h-4" />
+            </label>
+
+            <div class="flex items-center justify-between pt-1">
+              <label class="flex items-center gap-2 cursor-pointer text-xs text-[#171717] dark:text-white">
+                <input type="checkbox" id="chk-uppercase" checked class="rounded accent-[#0070f3]" />
+                <span>ALL CAPS</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer text-xs text-[#171717] dark:text-white">
+                <input type="checkbox" id="chk-text-shadow" checked class="rounded accent-[#0070f3]" />
+                <span>Drop Shadow</span>
+              </label>
+              <button id="btn-add-floating-text" class="px-2.5 py-1 rounded-[6px] bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-medium hover:opacity-90 transition-all">
+                + Add Text Box
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 2: AI CAPTION GENERATOR -->
+        <div id="tab-ai" class="tab-panel hidden flex flex-col gap-4">
+          <div class="p-3.5 rounded-xl bg-gradient-to-br from-[#7928ca]/10 via-[#0070f3]/10 to-[#ff0080]/10 border border-[#7928ca]/20">
+            <div class="flex items-center gap-2 mb-1">
+              <h4 class="text-sm font-bold text-[#171717] dark:text-white">AI Meme Caption Engine</h4>
+              <span class="ml-auto text-[10px] font-bold px-2 py-0.5 rounded bg-[#7928ca] text-white">PRO AI</span>
+              <span id="lbl-ai-left" class="text-[10px] font-mono text-[#7928ca] dark:text-[#d8ccf1]">3 free left</span>
+            </div>
+            <p class="text-xs text-[#4d4d4d] dark:text-[#a1a1a1]">
+              Pick a comedic vibe to auto-generate hilarious top & bottom captions for your meme.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <button data-ai-category="humorous" class="ai-gen-btn p-3 rounded-lg border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#161616] hover:border-[#7928ca] transition-all text-left flex flex-col gap-1 group">
+              <span class="text-xs font-bold text-[#171717] dark:text-white flex items-center justify-between">
+                <span>🤖 Humorous</span>
+                <span class="text-[10px] text-[#8f8f8f] group-hover:text-[#7928ca]">Generate →</span>
+              </span>
+              <span class="text-[11px] text-[#8f8f8f]">Classic tech & programmer jokes</span>
+            </button>
+
+            <button data-ai-category="relatable" class="ai-gen-btn p-3 rounded-lg border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#161616] hover:border-[#7928ca] transition-all text-left flex flex-col gap-1 group">
+              <span class="text-xs font-bold text-[#171717] dark:text-white flex items-center justify-between">
+                <span>🔥 Relatable</span>
+                <span class="text-[10px] text-[#8f8f8f] group-hover:text-[#7928ca]">Generate →</span>
+              </span>
+              <span class="text-[11px] text-[#8f8f8f]">Everyday situations & life humor</span>
+            </button>
+
+            <button data-ai-category="tech" class="ai-gen-btn p-3 rounded-lg border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#161616] hover:border-[#7928ca] transition-all text-left flex flex-col gap-1 group">
+              <span class="text-xs font-bold text-[#171717] dark:text-white flex items-center justify-between">
+                <span>💻 Tech & Dev</span>
+                <span class="text-[10px] text-[#8f8f8f] group-hover:text-[#7928ca]">Generate →</span>
+              </span>
+              <span class="text-[11px] text-[#8f8f8f]">CSS, JS, bugs & prod deploys</span>
+            </button>
+
+            <button data-ai-category="sarcastic" class="ai-gen-btn p-3 rounded-lg border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#161616] hover:border-[#7928ca] transition-all text-left flex flex-col gap-1 group">
+              <span class="text-xs font-bold text-[#171717] dark:text-white flex items-center justify-between">
+                <span>😏 Sarcastic</span>
+                <span class="text-[10px] text-[#8f8f8f] group-hover:text-[#7928ca]">Generate →</span>
+              </span>
+              <span class="text-[11px] text-[#8f8f8f]">Witty & sarcastic commentary</span>
+            </button>
+          </div>
+
+          <button data-ai-category="genz" class="ai-gen-btn p-3 rounded-lg border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#161616] hover:border-[#7928ca] transition-all text-left flex items-center justify-between group">
+            <div>
+              <span class="text-xs font-bold text-[#171717] dark:text-white">💀 Gen Z & Modern Slang</span>
+              <p class="text-[11px] text-[#8f8f8f]">Bro felt that, lowkey aura memes</p>
+            </div>
+            <span class="text-xs font-bold text-[#7928ca] px-3 py-1 rounded-full bg-[#7928ca]/10">Surprise Me ⚡</span>
+          </button>
+        </div>
+
+        <!-- TAB CONTENT 3: TRIM & SPEED -->
+        <div id="tab-trim" class="tab-panel hidden flex flex-col gap-4">
+          <div>
+            <label class="block font-mono-eyebrow text-[11px] text-[#4d4d4d] dark:text-[#a1a1a1] mb-1.5">GIF & Video Trimmer</label>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <span class="text-xs text-[#8f8f8f] block mb-1">Start Time (s)</span>
+                <input type="number" id="input-trim-start" min="0" max="60" value="0" step="0.1" class="w-full px-3 py-1.5 text-xs rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white" />
+              </div>
+              <div>
+                <span class="text-xs text-[#8f8f8f] block mb-1">End Time (s)</span>
+                <input type="number" id="input-trim-end" min="0.5" max="60" value="3.0" step="0.1" class="w-full px-3 py-1.5 text-xs rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Playback Speed Multipliers -->
+          <div>
+            <label class="block font-mono-eyebrow text-[11px] text-[#4d4d4d] dark:text-[#a1a1a1] mb-1.5">Playback Speed Multiplier</label>
+            <div class="grid grid-cols-4 gap-2">
+              <button data-speed="0.25" class="speed-btn px-2 py-1.5 text-xs font-medium rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] hover:border-[#0070f3]">0.25x</button>
+              <button data-speed="0.5" class="speed-btn px-2 py-1.5 text-xs font-medium rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] hover:border-[#0070f3]">0.5x</button>
+              <button data-speed="1.0" class="speed-btn active-speed px-2 py-1.5 text-xs font-semibold rounded-[6px] bg-[#171717] dark:bg-white text-white dark:text-[#171717]">1.0x</button>
+              <button data-speed="1.5" class="speed-btn px-2 py-1.5 text-xs font-medium rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] hover:border-[#0070f3]">1.5x</button>
+              <button data-speed="2.0" class="speed-btn px-2 py-1.5 text-xs font-medium rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] hover:border-[#0070f3]">2.0x</button>
+              <button data-speed="3.0" class="speed-btn px-2 py-1.5 text-xs font-medium rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] hover:border-[#0070f3]">3.0x</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 4: WATERMARK & BACKGROUND COLOR -->
+        <div id="tab-watermark-bg" class="tab-panel hidden flex flex-col gap-4">
+          <!-- Watermark Options -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="font-mono-eyebrow text-[11px] text-[#4d4d4d] dark:text-[#a1a1a1]">Watermark Settings</label>
+              <span id="wm-badge" class="text-[10px] font-mono text-[#0070f3]">⚡ FREE</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-3 mb-2">
+              <div>
+                <span class="text-xs text-[#8f8f8f] block mb-1">Watermark Text</span>
+                <input type="text" id="input-watermark-text" value="gifmememaker.com" placeholder="Custom Watermark..." class="w-full px-3 py-1.5 text-xs rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white" />
+              </div>
+              <div>
+                <span class="text-xs text-[#8f8f8f] block mb-1">Position / Mode</span>
+                <select id="select-watermark-pos" class="w-full px-2.5 py-1.5 text-xs rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white">
+                  <option value="bottom-right" selected>Bottom-Right (gifmememaker)</option>
+                  <option value="bottom-left">Bottom-Left</option>
+                  <option value="top-right">Top-Right</option>
+                  <option value="none">👑 Pro: Remove Watermark</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs text-[#8f8f8f] mb-1">
+                <span>Watermark Opacity</span>
+                <span id="lbl-wm-opacity" class="font-mono">70%</span>
+              </div>
+              <input type="range" id="slider-wm-opacity" min="10" max="100" value="70" class="w-full h-1.5 bg-[#ebebeb] dark:bg-[#222222] rounded-lg appearance-none cursor-pointer accent-[#0070f3]" />
+            </div>
+          </div>
+
+          <!-- Background Color & Canvas Padding -->
+          <div class="pt-2 border-t border-[#ebebeb] dark:border-[#222222]">
+            <label class="block font-mono-eyebrow text-[11px] text-[#4d4d4d] dark:text-[#a1a1a1] mb-1.5">Background Color & Frame Padding</label>
+            <div class="grid grid-cols-2 gap-3 mb-2">
+              <div>
+                <span class="text-xs text-[#8f8f8f] block mb-1">Background Fill</span>
+                <div class="flex items-center gap-2">
+                  <input type="color" id="color-bg-fill" value="#0a0a0a" class="w-8 h-8 rounded border-0 cursor-pointer bg-transparent" />
+                  <select id="select-bg-preset" class="w-full px-2 py-1.5 text-xs rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white">
+                    <option value="#0a0a0a">Black</option>
+                    <option value="#ffffff">White</option>
+                    <option value="#0070f3">Vercel Blue</option>
+                    <option value="#7928ca">Violet</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <span class="text-xs text-[#8f8f8f] block mb-1">Frame Padding (<span id="lbl-bg-padding">0</span>px)</span>
+                <input type="range" id="slider-bg-padding" min="0" max="80" value="0" class="w-full h-1.5 bg-[#ebebeb] dark:bg-[#222222] rounded-lg appearance-none cursor-pointer accent-[#0070f3] mt-2" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 5: EXPORT & FORMAT -->
+        <div id="tab-export" class="tab-panel hidden flex flex-col gap-4">
+          <div>
+            <label class="block font-mono-eyebrow text-[11px] text-[#4d4d4d] dark:text-[#a1a1a1] mb-1.5">Export Resolution & Quality</label>
+            <div class="grid grid-cols-2 gap-2 mb-3">
+              <button id="res-free" class="px-3 py-2 text-xs font-semibold rounded-[6px] bg-[#171717] dark:bg-white text-white dark:text-[#171717] flex items-center justify-between">
+                <span>⚡ Standard HD (1080p)</span>
+                <span class="text-[10px] font-mono">FREE</span>
+              </button>
+              <button id="res-pro" class="px-3 py-2 text-xs font-semibold rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#4d4d4d] dark:text-[#a1a1a1] flex items-center justify-between hover:border-[#7928ca]">
+                <span>👑 Ultra HD (4K)</span>
+                <span class="text-[10px] font-mono text-[#7928ca]">PRO</span>
+              </button>
+            </div>
+
+            <label class="block font-mono-eyebrow text-[11px] text-[#4d4d4d] dark:text-[#a1a1a1] mb-1.5">Target Format</label>
+            <div class="grid grid-cols-3 gap-2">
+              <button data-format="gif" class="format-btn active-format px-3 py-2 text-xs font-semibold rounded-[6px] bg-[#171717] dark:bg-white text-white dark:text-[#171717] shadow-xs">
+                Animated GIF
+                <span class="block text-[9px] font-mono opacity-70">FREE</span>
+              </button>
+              <button data-format="video" class="format-btn px-3 py-2 text-xs font-medium rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white hover:border-[#7928ca]">
+                Video (WEBM/MP4)
+                <span class="block text-[9px] font-mono text-[#7928ca]">PRO</span>
+              </button>
+              <button data-format="png" class="format-btn px-3 py-2 text-xs font-medium rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white hover:border-[#0070f3]">
+                PNG / JPG Still
+                <span class="block text-[9px] font-mono opacity-70">FREE</span>
+              </button>
+            </div>
+
+            <div>
+              <label class="block font-mono-eyebrow text-[10px] text-[#4d4d4d] dark:text-[#a1a1a1] mb-1">Still Format</label>
+              <select id="select-still-format" class="w-full px-3 py-1.5 text-xs rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white">
+                <option value="png">PNG (lossless)</option>
+                <option value="jpg">JPG (smaller file)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- GIF FPS selector -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <span class="text-xs text-[#8f8f8f] block mb-1">Frame Rate (FPS)</span>
+              <select id="select-fps" class="w-full px-3 py-1.5 text-xs rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white">
+                <option value="15">15 FPS · Standard (Free)</option>
+                <option value="24" selected>24 FPS · Smooth (Free)</option>
+                <option value="30">30 FPS · Pro HD</option>
+                <option value="60">60 FPS · Ultra (Pro)</option>
+              </select>
+            </div>
+            <div>
+              <span class="text-xs text-[#8f8f8f] block mb-1">Action</span>
+              <button id="btn-copy-clipboard" class="w-full py-1.5 text-xs font-medium rounded-[6px] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white hover:border-[#0070f3] flex items-center justify-center gap-1">
+                <span>Copy to Clipboard</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Download Action Button -->
+          <button 
+            id="btn-export-download" 
+            class="w-full py-3.5 rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-sm font-bold hover:opacity-90 transition-all shadow-md active:scale-98 flex items-center justify-center gap-2 mt-2"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+            </svg>
+            <span>Generate &amp; Download</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pro Unlock Modal (floating, Level-2 shadow per DESIGN.md) -->
+  <div id="pro-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" data-pro-backdrop></div>
+    <div class="relative w-full max-w-md bg-white dark:bg-[#111111] border border-[#ebebeb] dark:border-[#222222] rounded-2xl p-8 shadow-[0px_2px_2px_rgba(0,0,0,0.08),0px_8px_16px_-4px_rgba(0,0,0,0.12)]">
+      <div class="font-mono-eyebrow text-[#0070f3] dark:text-[#3291ff] mb-3 flex items-center gap-1.5">
+        <span>GIFMEMEMAKER PRO</span>
+      </div>
+      <h3 class="text-2xl font-extrabold text-[#171717] dark:text-white tracking-[-0.03em] mb-2">
+        Unlock this Pro feature
+      </h3>
+      <p class="text-sm text-[#4d4d4d] dark:text-[#a1a1a1] mb-4">
+        <span id="pro-modal-feature" class="font-semibold text-[#171717] dark:text-white"></span> is part of
+        gifmememaker Pro. Every Pro plan is watermark-free, 4K-ready and ad-free.
+      </p>
+      <ul class="text-xs text-[#4d4d4d] dark:text-[#a1a1a1] space-y-2 mb-6">
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#0070f3]"></span> No watermark on any export</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#0070f3]"></span> Ultra HD (4K) stills &amp; 30/60 FPS GIFs</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#0070f3]"></span> Unlimited AI caption generations</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#0070f3]"></span> WEBM / MP4 video export</li>
+      </ul>
+      <div class="flex flex-col gap-2">
+        <button id="pro-modal-unlock" class="w-full py-3 rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-sm font-bold hover:opacity-90 transition-all">
+          Unlock Pro (Demo Mode)
+        </button>
+        <button id="pro-modal-close" class="w-full py-2.5 rounded-full text-sm font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white transition-colors">
+          Keep it free
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { MemeStudio } from '../scripts/studio';
+
+  const studio = new MemeStudio();
+  studio.init();
+
+  // AI caption generation
+  document.querySelectorAll('.ai-gen-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cat = btn.getAttribute('data-ai-category') || 'humorous';
+      studio.generateAiCaption(cat);
+    });
+  });
+
+  // Pro modal backdrop click
+  const backdrop = document.querySelector('[data-pro-backdrop]');
+  backdrop?.addEventListener('click', () => {
+    const modal = document.getElementById('pro-modal');
+    if (modal) { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+  });
+
+  // Tab switching
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const targetTab = btn.getAttribute('data-tab');
+      tabBtns.forEach((b) => {
+        b.classList.remove('active-tab', 'text-[#171717]', 'dark:text-white', 'bg-[#fafafa]', 'dark:bg-[#1a1a1a]', 'border');
+        b.classList.add('text-[#4d4d4d]', 'dark:text-[#a1a1a1]');
+      });
+      btn.classList.add('active-tab', 'text-[#171717]', 'dark:text-white', 'bg-[#fafafa]', 'dark:bg-[#1a1a1a]', 'border');
+      tabPanels.forEach((panel) => {
+        panel.classList.toggle('hidden', panel.id !== targetTab);
+      });
+    });
+  });
+</script>

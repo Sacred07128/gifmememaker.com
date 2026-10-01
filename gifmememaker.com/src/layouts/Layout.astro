@@ -1,0 +1,150 @@
+---
+import '../styles/global.css';
+import {
+  SITE_URL,
+  SITE_NAME,
+  DEFAULT_TITLE,
+  DEFAULT_DESCRIPTION,
+} from '../data/site';
+
+interface Props {
+	title?: string;
+	description?: string;
+	/** Absolute-or-relative path used for the canonical + og:url tags. */
+	path?: string;
+	image?: string;
+	imageAlt?: string;
+	ogType?: string;
+	/** Set for pages that should never be indexed (error pages, search results…). */
+	noindex?: boolean;
+	/** Extra JSON-LD objects merged with the default WebSite / WebApplication schema. */
+	jsonLd?: Record<string, unknown>[];
+}
+
+const {
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  path = Astro.url.pathname,
+  image = '/og-image.png',
+  imageAlt = 'gifmememaker.com — free meme maker online with AI captions, GIF and video meme tools',
+  ogType = 'website',
+  noindex = false,
+  jsonLd = [],
+} = Astro.props;
+
+const robotsContent = noindex
+  ? 'noindex, nofollow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+
+const canonicalURL = new URL(path, SITE_URL).href;
+const imageURL = new URL(image, SITE_URL).href;
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL + '/',
+      name: SITE_NAME,
+      description,
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'WebApplication',
+      '@id': `${SITE_URL}/#application`,
+      name: 'gifmememaker Meme Maker',
+      url: SITE_URL + '/',
+      applicationCategory: 'MultimediaApplication',
+      operatingSystem: 'Any (web browser)',
+      browserRequirements: 'Requires JavaScript',
+      description,
+      inLanguage: 'en',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      featureList:
+        'meme maker online, ai meme maker, video meme maker, gif meme maker, free meme maker, meme maker app',
+      screenshot: imageURL,
+    },
+  ],
+};
+
+const schemas = [websiteSchema, ...jsonLd];
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<!-- Apply saved theme before first paint to avoid a flash of the wrong theme -->
+		<script is:inline>
+			(function () {
+				try {
+					var t = localStorage.getItem('theme');
+					if (t === 'light') document.documentElement.classList.remove('dark');
+					else if (t === 'dark') document.documentElement.classList.add('dark');
+				} catch (e) {}
+			})();
+		</script>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Favicons & PWA -->
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="GMM" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Primary SEO -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta
+			name="keywords"
+			content="meme maker, meme maker online, video meme maker, online meme maker, meme maker app, ai meme maker, meme maker ai, meme maker free, gif meme maker, best meme maker app, meme maker video, meme maker gif, free meme maker, free meme maker app"
+		/>
+		<meta
+			name="robots"
+			content={robotsContent}
+		/>
+		<meta name="author" content={SITE_NAME} />
+		<meta name="theme-color" content="#0a0a0a" />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph -->
+		<meta property="og:site_name" content={SITE_NAME} />
+		<meta property="og:type" content={ogType} />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={imageURL} />
+		<meta property="og:image:secure_url" content={imageURL} />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content={imageAlt} />
+
+		<!-- Twitter / X -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageURL} />
+		<meta name="twitter:image:alt" content={imageAlt} />
+
+		{schemas.map((schema) => (
+			<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+		))}
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=Impact&family=Oswald:wght@500;700&family=Anton&family=Comic+Neue:wght@700&display=swap" rel="stylesheet" />
+	</head>
+	<body class="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a] text-[#171717] dark:text-[#ededed] antialiased selection:bg-[#0070f3] selection:text-white transition-colors duration-200">
+		<slot />
+	</body>
+</html>
+

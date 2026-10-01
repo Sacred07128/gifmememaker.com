@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Logo from '../components/Logo.astro';
+
+const TITLE = 'Server Error (500) | gifmememaker.com';
+const DESCRIPTION =
+  'Something went wrong on our side. Reload the page or head back to the free meme maker online — your files never leave your browser.';
+---
+
+<Layout title={TITLE} description={DESCRIPTION} path="/500" noindex>
+  <Header />
+  <main>
+    <section class="border-b border-[#ebebeb] dark:border-[#222222] geist-mesh-gradient">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+        <Logo class="w-24 h-24 mx-auto rounded-2xl shadow-lg" />
+        <span class="block mt-8 font-mono-eyebrow text-[#ee0000]">Error 500 — Server Error</span>
+        <h1
+          class="mt-3 text-5xl sm:text-6xl font-extrabold tracking-tight text-[#171717] dark:text-white"
+        >
+          Something broke on our side
+        </h1>
+        <p
+          class="mt-4 text-base sm:text-lg text-[#4d4d4d] dark:text-[#a1a1a1] leading-relaxed max-w-xl mx-auto"
+        >
+          The server hit an unexpected error while handling this request. Your images, GIFs and videos
+          never leave your browser, so nothing was lost — reloading usually fixes it.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <button
+            type="button"
+            onclick="location.reload()"
+            class="px-5 py-2.5 rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-sm font-medium hover:opacity-90 transition-all shadow-sm active:scale-95 cursor-pointer"
+          >
+            Try Again
+          </button>
+          <a
+            href="/"
+            class="px-5 py-2.5 rounded-full border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] text-[#171717] dark:text-white text-sm font-medium hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] transition-colors"
+          >
+            Back to the Meme Maker
+          </a>
+        </div>
+        <p class="mt-8 text-sm text-[#8f8f8f] dark:text-[#666666]">
+          Still stuck? Email
+          <a
+            href="mailto:support@gifmememaker.com"
+            class="text-[#0070f3] dark:text-[#3291ff] underline text-underline-offset-2"
+            >support@gifmememaker.com</a
+          >
+          or check the <a href="/#faq" class="text-[#0070f3] dark:text-[#3291ff] underline text-underline-offset-2">FAQ</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

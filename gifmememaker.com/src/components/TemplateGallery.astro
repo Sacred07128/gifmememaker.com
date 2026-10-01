@@ -1,0 +1,220 @@
+---
+import { MEME_TEMPLATES } from '../utils/memeData';
+---
+
+<section id="templates" class="py-16 bg-white dark:bg-[#0d0d0d] border-b border-[#ebebeb] dark:border-[#222222] transition-colors duration-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header & Controls -->
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-8 pb-6 border-b border-[#ebebeb] dark:border-[#222222] gap-4">
+      <div>
+        <div class="font-mono-eyebrow text-[#0070f3] dark:text-[#3291ff] mb-2 flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+          </svg>
+          Meme & GIF Presets Library
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#171717] dark:text-white tracking-[-0.03em]">
+          Browse Meme Templates
+        </h2>
+        <p class="text-sm text-[#4d4d4d] dark:text-[#a1a1a1] mt-1">
+          Choose from completely free templates or unlock pro HD presets. Click any card to edit in studio.
+        </p>
+      </div>
+
+      <!-- Live Search & Filter Row -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        <!-- Search Input -->
+        <div class="relative w-full sm:w-64">
+          <input 
+            type="text" 
+            id="template-search-input" 
+            placeholder="Search 70+ templates..." 
+            class="w-full pl-9 pr-4 py-2 text-xs rounded-full bg-[#fafafa] dark:bg-[#161616] border border-[#ebebeb] dark:border-[#333333] text-[#171717] dark:text-white focus:outline-none focus:border-[#0070f3] transition-colors"
+          />
+          <svg class="w-4 h-4 text-[#8f8f8f] absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+          <button data-filter="all" class="tpl-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-[#171717] dark:bg-white dark:text-[#171717] shrink-0">
+            All
+          </button>
+          <button data-filter="free" class="tpl-filter-btn px-3.5 py-1.5 rounded-full text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1a1] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#222222] shrink-0 flex items-center gap-1">
+            <span>⚡ Free Only</span>
+          </button>
+          <button data-filter="premium" class="tpl-filter-btn px-3.5 py-1.5 rounded-full text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1a1] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#222222] shrink-0 flex items-center gap-1">
+            <span>👑 Pro</span>
+          </button>
+          <button data-filter="gif" class="tpl-filter-btn px-3.5 py-1.5 rounded-full text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1a1] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#222222] shrink-0">
+            GIFs
+          </button>
+          <button data-filter="image" class="tpl-filter-btn px-3.5 py-1.5 rounded-full text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1a1] bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#222222] shrink-0">
+            Still Images
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Template Cards Grid -->
+    <div id="template-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      {MEME_TEMPLATES.map((tpl) => (
+        <div 
+          class="tpl-card group bg-[#fafafa] dark:bg-[#111111] border border-[#ebebeb] dark:border-[#222222] rounded-xl overflow-hidden hover:border-[#0070f3] dark:hover:border-[#0070f3] transition-all duration-200 shadow-xs hover:shadow-md flex flex-col cursor-pointer"
+          data-name={tpl.name.toLowerCase()}
+          data-category={tpl.category.toLowerCase()}
+          data-type={tpl.type}
+          data-premium={tpl.isPremium ? 'true' : 'false'}
+          data-url={tpl.url}
+          data-top={tpl.topDefault}
+          data-bottom={tpl.bottomDefault}
+        >
+          <!-- Image / GIF Preview Container -->
+          <div class="relative aspect-video bg-[#0a0a0a] overflow-hidden flex items-center justify-center">
+            <img 
+              src={tpl.url} 
+              alt={tpl.name} 
+              loading="lazy" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+            />
+            
+            <!-- Type Badge -->
+            <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+              <span class="font-mono-eyebrow px-2 py-0.5 rounded bg-[#171717]/85 backdrop-blur-xs text-white text-[10px]">
+                {tpl.type.toUpperCase()}
+              </span>
+            </div>
+
+            <!-- Hover Load Overlay -->
+            <div class="absolute inset-0 bg-[#0070f3]/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="px-4 py-2 rounded-full bg-[#171717] text-white text-xs font-semibold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform flex items-center gap-1">
+                <span>Load in Studio</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Card Info Footer -->
+          <div class="p-3.5 flex items-center justify-between border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111]">
+            <div class="overflow-hidden">
+              <h3 class="text-xs font-bold text-[#171717] dark:text-white group-hover:text-[#0070f3] transition-colors truncate">
+                {tpl.name}
+              </h3>
+              <p class="text-[11px] text-[#8f8f8f] dark:text-[#666666] truncate mt-0.5">
+                "{tpl.topDefault}"
+              </p>
+            </div>
+            <button aria-label="Load template" class="w-7 h-7 rounded-full bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#333333] flex items-center justify-center text-[#171717] dark:text-white group-hover:bg-[#0070f3] group-hover:text-white group-hover:border-[#0070f3] transition-all shrink-0 ml-2">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Empty search result state -->
+    <div id="no-templates-found" class="hidden py-12 text-center">
+      <div class="w-12 h-12 rounded-full bg-[#fafafa] dark:bg-[#181818] border border-[#ebebeb] dark:border-[#222222] flex items-center justify-center mx-auto mb-3 text-xl">
+        🔍
+      </div>
+      <h4 class="text-base font-bold text-[#171717] dark:text-white mb-1">No templates found</h4>
+      <p class="text-xs text-[#8f8f8f] dark:text-[#666666]">Try adjusting your search query or switching filter tabs.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.tpl-filter-btn');
+    const cards = document.querySelectorAll('.tpl-card');
+    const searchInput = document.getElementById('template-search-input') as HTMLInputElement;
+    const noResults = document.getElementById('no-templates-found');
+
+    let activeFilter = 'all';
+    let searchQuery = '';
+
+    const filterCards = () => {
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const name = card.getAttribute('data-name') || '';
+        const category = card.getAttribute('data-category') || '';
+        const type = card.getAttribute('data-type') || '';
+        const isPremium = card.getAttribute('data-premium') === 'true';
+
+        const matchesSearch = name.includes(searchQuery) || category.includes(searchQuery);
+        let matchesFilter = true;
+
+        if (activeFilter === 'free') matchesFilter = !isPremium;
+        else if (activeFilter === 'premium') matchesFilter = isPremium;
+        else if (activeFilter === 'gif') matchesFilter = type === 'gif';
+        else if (activeFilter === 'image') matchesFilter = type === 'image';
+
+        if (matchesSearch && matchesFilter) {
+          (card as HTMLElement).style.display = 'flex';
+          visibleCount++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      if (noResults) {
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    };
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeFilter = btn.getAttribute('data-filter') || 'all';
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-[#171717]', 'dark:bg-white', 'text-white', 'dark:text-[#171717]', 'font-semibold');
+          b.classList.add('text-[#4d4d4d]', 'dark:text-[#a1a1a1]', 'bg-[#fafafa]', 'dark:bg-[#181818]');
+        });
+        btn.classList.remove('text-[#4d4d4d]', 'dark:text-[#a1a1a1]', 'bg-[#fafafa]', 'dark:bg-[#181818]');
+        btn.classList.add('bg-[#171717]', 'dark:bg-white', 'text-white', 'dark:text-[#171717]', 'font-semibold');
+
+        filterCards();
+      });
+    });
+
+    searchInput?.addEventListener('input', (e) => {
+      searchQuery = (e.target as HTMLInputElement).value.toLowerCase().trim();
+      filterCards();
+    });
+
+    // Handle template card click -> hand off to the MemeStudio engine
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const url = card.getAttribute('data-url');
+        const top = card.getAttribute('data-top') || '';
+        const bottom = card.getAttribute('data-bottom') || '';
+        const type = card.getAttribute('data-type') || 'image';
+        if (!url) return;
+
+        document.dispatchEvent(new CustomEvent('mif:load-template', { detail: { url, top, bottom, type } }));
+        document.getElementById('studio')?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // React to the studio's Free-Features-Only mode
+    document.addEventListener('mif:free-only', ((e: Event) => {
+      activeFilter = (e as CustomEvent<boolean>).detail ? 'free' : 'all';
+      filterBtns.forEach(b => {
+        const on = b.getAttribute('data-filter') === activeFilter;
+        b.classList.toggle('bg-[#171717]', on);
+        b.classList.toggle('dark:bg-white', on);
+        b.classList.toggle('text-white', on);
+        b.classList.toggle('dark:text-[#171717]', on);
+        b.classList.toggle('font-semibold', on);
+        b.classList.toggle('text-[#4d4d4d]', !on);
+        b.classList.toggle('dark:text-[#a1a1a1]', !on);
+        b.classList.toggle('bg-[#fafafa]', !on);
+        b.classList.toggle('dark:bg-[#181818]', !on);
+      });
+      filterCards();
+    }) as EventListener);
+  });
+</script>

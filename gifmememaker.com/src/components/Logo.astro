@@ -1,0 +1,60 @@
+---
+/**
+ * Site logo — ghost mark on a gradient tile.
+ * Clean rewrite of the original design (gradient bg, rounded tile, 45°-rotated ghost).
+ * IDs are made unique per instance so Header + Footer can coexist on one page.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = 'w-9 h-9' } = Astro.props;
+const uid = `logo${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<svg
+  class={className}
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 600 600"
+  role="img"
+  aria-label="gifmememaker.com logo"
+>
+  <defs>
+    <linearGradient id={`${uid}-grad`} x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f8f8f8" />
+      <stop offset="0.81" stop-color="#6746e6" />
+      <stop offset="1" stop-color="#eca0ff" />
+    </linearGradient>
+    <filter id={`${uid}-shadow`} x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="25" stdDeviation="25" flood-color="#000000" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Rounded gradient tile (38px padding, 524×524, rx 104 — mirrors the original) -->
+  <rect
+    x="38"
+    y="38"
+    width="524"
+    height="524"
+    rx="104"
+    fill={`url(#${uid}-grad)`}
+    filter={`url(#${uid}-shadow)`}
+  />
+
+  <!-- Ghost, centered (271px) and rotated 45° -->
+  <g transform="rotate(45 300 300)">
+    <g
+      transform="translate(164.5 164.5) scale(11.29167)"
+      fill="#fffdfd"
+      fill-opacity="0.35"
+      stroke="#0a020a"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M9 10h.01" />
+      <path d="M15 10h.01" />
+      <path d="M12 2a8 8 0 0 0-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 0 0-8-8z" />
+    </g>
+  </g>
+</svg>

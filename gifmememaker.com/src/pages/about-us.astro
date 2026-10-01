@@ -1,0 +1,102 @@
+---
+import ContentPage from '../components/ContentPage.astro';
+import { SITE_URL } from '../data/site';
+
+const TITLE = 'About Us - gifmememaker.com | Free Meme Maker Online';
+const DESCRIPTION =
+  'Meet gifmememaker.com, the free meme maker online for AI captions, GIF memes and video memes. Fast, private and 100% browser-based — no signup.';
+const PATH = '/about-us/';
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'About Us', item: `${SITE_URL}${PATH}` },
+  ],
+};
+
+const aboutSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About gifmememaker.com',
+  url: `${SITE_URL}${PATH}`,
+  description: DESCRIPTION,
+  inLanguage: 'en',
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'gifmememaker.com',
+    url: `${SITE_URL}/`,
+    description:
+      'gifmememaker.com builds free, browser-based meme making tools — an online meme maker with AI captions, a GIF meme maker and a video meme maker.',
+  },
+};
+---
+
+<ContentPage
+  title={TITLE}
+  description={DESCRIPTION}
+  path={PATH}
+  eyebrow="About Us"
+  h1="About gifmememaker.com — The Free Meme Maker Built for Creators"
+  jsonLd={[breadcrumb, aboutSchema]}
+>
+  <h2>Who We Are</h2>
+  <p>
+    gifmememaker.com is an independent, browser-based <strong>meme maker</strong> built for
+    people who want to make jokes fast — not fight with software. What started as a simple top-and-bottom-text
+    meme generator has grown into a full creative studio: an <strong>online meme maker</strong>, an
+    <strong>AI meme maker</strong>, a <strong>GIF meme maker</strong> and a <strong>video meme maker</strong>,
+    all living in a single tab of your browser.
+  </p>
+
+  <h2>Our Mission</h2>
+  <p>
+    Great meme tools should be instant, free and private. That is why everything here runs client-side:
+    no uploads to a server, no account wall, no waiting room. Open the studio, make something funny, download
+    it — that is the whole product. Whether you are a creator shipping daily content, a community manager
+    looking for a reaction GIF, or a friend who just wants the perfect group-chat reply, the
+    <strong>free meme maker</strong> experience is the same for everyone.
+  </p>
+
+  <h2>What You Can Create</h2>
+  <p>The studio combines several tools that usually live in separate apps:</p>
+  <ul>
+    <li><strong>Image memes</strong> — upload a photo or start from 70+ templates, add top/bottom captions, floating text, fonts, outlines and shadows.</li>
+    <li><strong>Animated GIF memes</strong> — load any GIF or convert video to GIF, trim it, retime it (0.25x–3.0x) and caption it frame by frame.</li>
+    <li><strong>Video memes</strong> — drop in an MP4, WebM or MOV, cut the exact moment, add punchline text and export.</li>
+    <li><strong>AI captions</strong> — let the <strong>meme maker AI</strong> write five comedic angles (humorous, relatable, tech, sarcastic, Gen Z) and click any suggestion to apply it.</li>
+    <li><strong>Social formats</strong> — aspect presets for Instagram, Twitter/X and TikTok (1:1, 16:9, 9:16) so your <strong>meme maker GIF</strong> and video output never gets cropped wrong.</li>
+  </ul>
+
+  <h2>Why Everything Runs in Your Browser</h2>
+  <p>
+    Traditional meme maker apps ask you to create an account, sync your gallery and often re-upload every
+    file you touch. We took the opposite approach. Canvas rendering, frame extraction, trimming and GIF
+    encoding all happen locally on your device, which means your media stays <strong>private by
+    default</strong>, exports start instantly, and the tool works the same on a school Chromebook as it does
+    on a workstation. It also keeps the <strong>meme maker free</strong> — there are no server bills to pass
+    on to you, and no ads interrupting the timeline.
+  </p>
+
+  <h2>Who It Is For</h2>
+  <p>
+    Our users are meme makers first: Gen Z creators, moderators, marketers, teachers, developers posting
+    dev memes, and anyone who communicates in images. Some of them want the
+    <strong>best meme maker app</strong> feel without installing anything; others want a quick
+    <strong>meme maker online</strong> they can open on any device. Both land in the same studio.
+  </p>
+
+  <h2>Free Forever, Private by Design</h2>
+  <p>
+    The core tool — the <strong>free meme maker app</strong> side of things — stays free: PNG/JPG export,
+    GIF export, templates, trimming, speed control and AI captions cost nothing. An optional Pro tier adds
+    4K stills, MP4/WebM export and watermark removal for heavy users. Whatever tier you use, your files
+    never leave your browser. That is the promise behind every meme made with gifmememaker.com.
+  </p>
+  <p>
+    Ready to start? <a href="/#studio">Open the studio</a> or read the
+    <a href="/#faq">frequently asked questions</a>. Questions about the project? Head to the
+    <a href="/contact-us/">contact page</a>.
+  </p>
+</ContentPage>
