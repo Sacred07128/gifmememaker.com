@@ -1,0 +1,12 @@
+{
+  // Cloudflare Workers (static assets) config.
+  // Serves the Astro build output (dist/) from Cloudflare's edge CDN.
+  // No Worker script needed — the site is 100% static.
+  "name": "gifmememaker",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // Serve dist/404.html (built by Astro) for unknown URLs.
+    "not_found_handling": "404-page"
+  }
+}

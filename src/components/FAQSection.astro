@@ -1,0 +1,39 @@
+---
+import { FAQS } from '../data/site';
+
+const faqs = FAQS;
+---
+
+<section id="faq" class="py-16 bg-white dark:bg-[#0d0d0d] border-b border-[#ebebeb] dark:border-[#222222] transition-colors duration-200">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <div class="font-mono-eyebrow text-[#0070f3] dark:text-[#3291ff] mb-2">
+        KNOWLEDGE & HELP CENTER
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-[#171717] dark:text-white tracking-[-0.03em]">
+        Frequently Asked Questions
+      </h2>
+    </div>
+
+    <!-- Accordion List -->
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <details class="group bg-[#fafafa] dark:bg-[#111111] border border-[#ebebeb] dark:border-[#222222] rounded-xl p-5 [&_summary::-webkit-details-marker]:hidden transition-all duration-200">
+          <summary class="flex items-center justify-between cursor-pointer font-semibold text-base text-[#171717] dark:text-white group-open:text-[#0070f3] dark:group-open:text-[#3291ff]">
+            <span>{faq.q}</span>
+            <span class="ml-4 shrink-0 rounded-full bg-white dark:bg-[#1f1f1f] border border-[#ebebeb] dark:border-[#333333] p-1 text-[#4d4d4d] dark:text-[#a1a1a1] group-open:rotate-180 transition-transform">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm text-[#4d4d4d] dark:text-[#a1a1a1] leading-relaxed border-t border-[#ebebeb] dark:border-[#222222] pt-4">
+            {faq.a}
+          </p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

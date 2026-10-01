@@ -1,0 +1,69 @@
+---
+import Logo from './Logo.astro';
+---
+
+<footer class="bg-[#fafafa] dark:bg-[#0a0a0a] border-t border-[#ebebeb] dark:border-[#222222] py-12 transition-colors duration-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+      <!-- Brand & Spec -->
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2 mb-3">
+          <Logo class="w-6 h-6 shrink-0" />
+          <span class="font-bold text-base text-[#171717] dark:text-white">gifmememaker.com</span>
+          <span class="font-mono-eyebrow text-[10px] px-1.5 py-0.5 rounded bg-[#ebebeb] dark:bg-[#222222] text-[#666666] dark:text-[#a1a1a1]">v3.0</span>
+        </div>
+        <p class="text-sm text-[#4d4d4d] dark:text-[#a1a1a1] max-w-sm mb-4 leading-relaxed">
+          The AI meme & GIF studio that runs entirely in your browser. Create with templates, GIFs or your own uploads —
+          filter to 100% free features, or unlock Pro for 4K, video export and watermark-free downloads.
+        </p>
+        <div class="font-mono text-xs text-[#8f8f8f] dark:text-[#666666] flex items-center gap-2">
+          <span>Domain: <strong class="text-[#171717] dark:text-white">gifmememaker.com</strong></span>
+          <span>•</span>
+          <span>Geist UI Engine</span>
+        </div>
+      </div>
+
+      <!-- Quick Feature Links -->
+      <div>
+        <h4 class="font-mono-eyebrow text-xs text-[#171717] dark:text-white mb-3">Meme & GIF Tools</h4>
+        <ul class="space-y-2 text-xs text-[#4d4d4d] dark:text-[#a1a1a1]">
+          <li><a href="/#studio" class="hover:text-[#0070f3] transition-colors">Upload Image, GIF or Video</a></li>
+          <li><a href="/#studio" class="hover:text-[#0070f3] transition-colors">Video to GIF Converter</a></li>
+          <li><a href="/#studio" class="hover:text-[#0070f3] transition-colors">Trim & Speed Changer (0.25x – 3x)</a></li>
+          <li><a href="/#studio" class="hover:text-[#0070f3] transition-colors">Rotate, Flip & Aspect Presets</a></li>
+          <li><a href="/#studio" class="hover:text-[#0070f3] transition-colors">GIF / PNG / JPG / WebM Export</a></li>
+          <li><a href="/#studio" class="hover:text-[#0070f3] transition-colors">Free-Features-Only Mode</a></li>
+        </ul>
+      </div>
+
+      <!-- Template Vault Links -->
+      <div>
+        <h4 class="font-mono-eyebrow text-xs text-[#171717] dark:text-white mb-3">Template Vault</h4>
+        <ul class="space-y-2 text-xs text-[#4d4d4d] dark:text-[#a1a1a1]">
+          <li><a href="/#templates" class="hover:text-[#0070f3] transition-colors">How Bro Felt Series</a></li>
+          <li><a href="/#templates" class="hover:text-[#0070f3] transition-colors">Anime & Classic Memes</a></li>
+          <li><a href="/#templates" class="hover:text-[#0070f3] transition-colors">Dev & Tech Memes</a></li>
+          <li><a href="/#templates" class="hover:text-[#0070f3] transition-colors">Reaction GIFs</a></li>
+          <li><a href="/#comparison" class="hover:text-[#0070f3] transition-colors">Free vs Pro Tiers</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright Footer Bar -->
+    <div class="pt-8 border-t border-[#ebebeb] dark:border-[#222222] flex flex-col sm:flex-row items-center justify-between text-xs text-[#8f8f8f] dark:text-[#666666] gap-4">
+      <p>© 2026 gifmememaker.com. Built with Astro &amp; Tailwind CSS v4.</p>
+      <nav aria-label="Legal and company" class="flex flex-wrap items-center justify-center gap-4 font-mono text-[11px]">
+        <a href="/about-us/" class="hover:text-[#0070f3] transition-colors">About Us</a>
+        <a href="/contact-us/" class="hover:text-[#0070f3] transition-colors">Contact Us</a>
+        <a href="/privacy-policy/" class="hover:text-[#0070f3] transition-colors">Privacy Policy</a>
+        <a href="/terms-and-conditions/" class="hover:text-[#0070f3] transition-colors">Terms</a>
+      </nav>
+      <div class="flex items-center gap-4 font-mono text-[11px]">
+        <span>100% Client-Side</span>
+        <span>•</span>
+        <span>No Ads, No Signup</span>
+      </div>
+    </div>
+  </div>
+</footer>
