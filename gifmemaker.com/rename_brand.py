@@ -1,1 +1,0 @@
-    s = open(f, encoding='utf8', errors='replace').read()

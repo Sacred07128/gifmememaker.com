@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gifmememaker.com/sitemap.xml
+Sitemap: https://gifmememaker.com/sitemap-index.xml
