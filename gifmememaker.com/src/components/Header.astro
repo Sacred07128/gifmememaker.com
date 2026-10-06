@@ -1,5 +1,6 @@
 ---
 import Logo from './Logo.astro';
+import LanguageSelector from './LanguageSelector.astro';
 ---
 
 <header class="sticky top-0 z-50 w-full border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa]/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md transition-colors duration-200">
@@ -7,21 +8,15 @@ import Logo from './Logo.astro';
     <!-- Brand Logo -->
     <a href="/" class="flex items-center gap-2.5 group">
       <Logo class="w-9 h-9 shrink-0 rounded-xl shadow-sm group-hover:scale-105 transition-transform duration-200" />
-      <div class="flex flex-col">
-        <span class="font-bold text-base tracking-tight text-[#171717] dark:text-white flex items-center gap-1.5">
-          gifmememaker
-        </span>
-        <span class="text-[10px] font-mono text-[#8f8f8f] dark:text-[#666666] hidden sm:block">gifmememaker.com</span>
-      </div>
+      <span class="font-bold text-base tracking-tight text-[#171717] dark:text-white flex items-center gap-1.5">
+        gifmememaker.com
+      </span>
     </a>
 
     <!-- Navigation Links -->
     <nav class="hidden md:flex items-center gap-1">
       <a href="/#studio" class="px-3.5 py-1.5 rounded-full text-sm font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white hover:bg-[#ebebeb]/50 dark:hover:bg-[#1a1a1a] transition-all">
         Studio Generator
-      </a>
-      <a href="/#ai-captions" class="px-3.5 py-1.5 rounded-full text-sm font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white hover:bg-[#ebebeb]/50 dark:hover:bg-[#1a1a1a] transition-all flex items-center gap-1">
-        <span>🤖 AI Captions</span>
       </a>
       <a href="/#templates" class="px-3.5 py-1.5 rounded-full text-sm font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white hover:bg-[#ebebeb]/50 dark:hover:bg-[#1a1a1a] transition-all">
         Template Vault
@@ -36,6 +31,9 @@ import Logo from './Logo.astro';
 
     <!-- Header Actions -->
     <div class="flex items-center gap-3">
+      <!-- Language Selector -->
+      <LanguageSelector />
+
       <!-- Dark Mode Toggle Button (6px square app control per DESIGN.md) -->
       <button 
         id="theme-toggle" 
@@ -70,4 +68,11 @@ import Logo from './Logo.astro';
     const isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   });
+
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    document.documentElement.classList.remove('dark');
+  } else if (savedTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+  }
 </script>

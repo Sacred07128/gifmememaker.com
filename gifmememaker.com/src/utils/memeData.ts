@@ -12,6 +12,136 @@ export interface MemeTemplate {
 export const MEME_TEMPLATES: MemeTemplate[] = [
   // ---- Animated GIF Templates ----
   {
+    id: 'blinking-guy',
+    name: "Blinking White Guy",
+    type: 'gif',
+    isPremium: false,
+    category: 'GIFs',
+    url: '/assets/gifs/blinking-guy.gif',
+    topDefault: "TEACHER: THE TEST IS EASY",
+    bottomDefault: "THE TEST:"
+  },
+  {
+    id: 'leo-cheers-gif',
+    name: "Leonardo DiCaprio Cheers Toast",
+    type: 'gif',
+    isPremium: false,
+    category: 'GIFs',
+    url: '/assets/gifs/leo-cheers.gif',
+    topDefault: "CHEERS TO THE CODE",
+    bottomDefault: "THAT WORKED ON THE FIRST RUN"
+  },
+  {
+    id: 'kermit-tea',
+    name: "Kermit Sipping Tea",
+    type: 'gif',
+    isPremium: false,
+    category: 'GIFs',
+    url: '/assets/gifs/kermit-tea.gif',
+    topDefault: "I WARNED YOU ABOUT THAT BUG",
+    bottomDefault: "BUT THAT IS NONE OF MY BUSINESS"
+  },
+  {
+    id: 'mind-blown',
+    name: "Mind Blown Reaction",
+    type: 'gif',
+    isPremium: false,
+    category: 'GIFs',
+    url: '/assets/gifs/mind-blown.gif',
+    topDefault: "WHEN YOU REALIZE",
+    bottomDefault: "YOU CAN MAKE MEMES 100% IN BROWSER"
+  },
+  {
+    id: 'rock-eyebrow',
+    name: "The Rock Eyebrow Raise",
+    type: 'gif',
+    isPremium: false,
+    category: 'GIFs',
+    url: '/assets/gifs/rock-eyebrow.gif',
+    topDefault: "WHEN SOMEONE PUSHES DIRECTLY TO MAIN",
+    bottomDefault: "AND SAYS TRUST ME BRO"
+  },
+  {
+    id: 'pop-cat',
+    name: "Pop Cat Animated",
+    type: 'gif',
+    isPremium: false,
+    category: 'GIFs',
+    url: '/assets/gifs/pop-cat.gif',
+    topDefault: "ME YAPPING WITH NO EVIDENCE",
+    bottomDefault: "JUST PURE CONFIDENCE"
+  },
+  {
+    id: 'vibing-cat',
+    name: "Cat Vibing to Music",
+    type: 'gif',
+    isPremium: false,
+    category: 'GIFs',
+    url: '/assets/gifs/vibing-cat.gif',
+    topDefault: "WHEN THE WEEKEND STARTS",
+    bottomDefault: "AND ALL YOUR TASKS ARE DONE"
+  },
+  {
+    id: 'homer-hedge',
+    name: "Homer Simpson Backs Into Bushes",
+    type: 'gif',
+    isPremium: false,
+    category: 'GIFs',
+    url: '/assets/gifs/homer-hedge.gif',
+    topDefault: "WHEN THEY ASK WHO BROKE THE BUILD",
+    bottomDefault: "I WAS NEVER HERE"
+  },
+  {
+    id: 'spiderman-dance',
+    name: "Spider-Man Dancing",
+    type: 'gif',
+    isPremium: false,
+    category: 'GIFs',
+    url: '/assets/gifs/spiderman-dance.gif',
+    topDefault: "WHEN YOUR MEME GETS",
+    bottomDefault: "OVER 10K LIKES"
+  },
+  {
+    id: 'obama-mic-drop',
+    name: "Obama Mic Drop",
+    type: 'gif',
+    isPremium: false,
+    category: 'GIFs',
+    url: '/assets/gifs/obama-mic-drop.gif',
+    topDefault: "DELIVERED ON TIME WITH ZERO BUGS",
+    bottomDefault: "MIC DROP"
+  },
+  {
+    id: 'confused-math-lady',
+    name: "Confused Math Lady Calculating",
+    type: 'gif',
+    isPremium: false,
+    category: 'GIFs',
+    url: '/assets/gifs/confused-math-lady.gif',
+    topDefault: "ME TRYING TO CALCULATE",
+    bottomDefault: "WHERE ALL MY TIME WENT"
+  },
+  {
+    id: 'shocked-cat',
+    name: "Shocked Surprised Cat",
+    type: 'gif',
+    isPremium: false,
+    category: 'GIFs',
+    url: '/assets/gifs/shocked-cat.gif',
+    topDefault: "WHEN YOU CHECK YOUR BANK ACCOUNT",
+    bottomDefault: "AFTER A WEEKEND OF ONLINE SHOPPING"
+  },
+  {
+    id: 'success-kid',
+    name: "Success Kid Fist Pump",
+    type: 'gif',
+    isPremium: false,
+    category: 'GIFs',
+    url: '/assets/gifs/success-kid.gif',
+    topDefault: "TRIED SOMETHING RISKY",
+    bottomDefault: "WORKED BEAUTIFULLY"
+  },
+  {
     id: 'goku-angry',
     name: 'Goku Going Super Saiyan',
     type: 'gif',
@@ -470,7 +600,7 @@ export const MEME_TEMPLATES: MemeTemplate[] = [
     isPremium: false,
     category: 'Classic',
     url: '/assets/memes/monkey glasses writing meme.jpg',
-    topDefault: 'ME WRITING DEEP AI MEMES',
+    topDefault: 'ME WRITING VIRAL MEMES',
     bottomDefault: 'AT 3:00 AM'
   },
   {
@@ -702,10 +832,1012 @@ export const MEME_TEMPLATES: MemeTemplate[] = [
     url: '/assets/memes/your wig sir meme.jpg',
     topDefault: 'TAKING IT PERSONAL',
     bottomDefault: 'BECAUSE OF YOUR WIG, SIR'
+  },
+
+  // ---- Web Classic & Trending Meme Templates ----
+  {
+    id: 'drake-hotline-bling',
+    name: "Drake Hotline Bling",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/drake-hotline-bling.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'two-buttons',
+    name: "Two Buttons",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/two-buttons.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'distracted-boyfriend',
+    name: "Distracted Boyfriend",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/distracted-boyfriend.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'bernie-i-am-once-again-asking-for-your-support',
+    name: "Bernie I Am Once Again Asking For Your Support",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/bernie-i-am-once-again-asking-for-your-support.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'uno-draw-25-cards',
+    name: "UNO Draw 25 Cards",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/uno-draw-25-cards.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'left-exit-12-off-ramp',
+    name: "Left Exit 12 Off Ramp",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/left-exit-12-off-ramp.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'always-has-been',
+    name: "Always Has Been",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/always-has-been.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'anakin-padme-4-panel',
+    name: "Anakin Padme 4 Panel",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/anakin-padme-4-panel.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'epic-handshake',
+    name: "Epic Handshake",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/epic-handshake.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'gru-s-plan',
+    name: "Gru's Plan",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/gru-s-plan.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'running-away-balloon',
+    name: "Running Away Balloon",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/running-away-balloon.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'disaster-girl',
+    name: "Disaster Girl",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/disaster-girl.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'waiting-skeleton',
+    name: "Waiting Skeleton",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/waiting-skeleton.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'sad-pablo-escobar',
+    name: "Sad Pablo Escobar",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/sad-pablo-escobar.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'trade-offer',
+    name: "Trade Offer",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/trade-offer.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'change-my-mind',
+    name: "Change My Mind",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/change-my-mind.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'y-all-got-any-more-of-that',
+    name: "Y'all Got Any More Of That",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/y-all-got-any-more-of-that.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'x-x-everywhere',
+    name: "X, X Everywhere",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/x-x-everywhere.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'batman-slapping-robin',
+    name: "Batman Slapping Robin",
+    type: 'image',
+    isPremium: false,
+    category: 'Reaction',
+    url: '/assets/memes/batman-slapping-robin.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'woman-yelling-at-cat',
+    name: "Woman Yelling At Cat",
+    type: 'image',
+    isPremium: false,
+    category: 'Trending',
+    url: '/assets/memes/woman-yelling-at-cat.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'marked-safe-from',
+    name: "Marked Safe From",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/marked-safe-from.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'bernie-sanders-once-again-asking',
+    name: "Bernie Sanders Once Again Asking",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/bernie-sanders-once-again-asking.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'bike-fall',
+    name: "Bike Fall",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/bike-fall.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'ancient-aliens',
+    name: "Ancient Aliens",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/ancient-aliens.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'mocking-spongebob',
+    name: "Mocking Spongebob",
+    type: 'image',
+    isPremium: false,
+    category: 'Trending',
+    url: '/assets/memes/mocking-spongebob.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'one-does-not-simply',
+    name: "One Does Not Simply",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/one-does-not-simply.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'they-re-the-same-picture',
+    name: "They're The Same Picture",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/they-re-the-same-picture.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'is-this-a-pigeon',
+    name: "Is This A Pigeon",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/is-this-a-pigeon.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'you-guys-are-getting-paid',
+    name: "You Guys are Getting Paid",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/you-guys-are-getting-paid.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'absolute-cinema-imgflip',
+    name: "Absolute Cinema",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/absolute-cinema.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'buff-doge-vs-cheems',
+    name: "Buff Doge vs. Cheems",
+    type: 'image',
+    isPremium: false,
+    category: 'Trending',
+    url: '/assets/memes/buff-doge-vs-cheems.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: '0-days-without-lenny-simpsons',
+    name: "0 days without (Lenny, Simpsons)",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/0-days-without-lenny-simpsons.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'expanding-brain',
+    name: "Expanding Brain",
+    type: 'image',
+    isPremium: false,
+    category: 'Tech',
+    url: '/assets/memes/expanding-brain.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'mother-ignoring-kid-drowning-in-a-pool',
+    name: "Mother Ignoring Kid Drowning In A Pool",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/mother-ignoring-kid-drowning-in-a-pool.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'squidward-window',
+    name: "Squidward window",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/squidward-window.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'oprah-you-get-a',
+    name: "Oprah You Get A",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/oprah-you-get-a.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'this-is-where-i-d-put-my-trophy-if-i-had-one',
+    name: "This Is Where I'd Put My Trophy If I Had One",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/this-is-where-i-d-put-my-trophy-if-i-had-one.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'tuxedo-winnie-the-pooh',
+    name: "Tuxedo Winnie The Pooh",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/tuxedo-winnie-the-pooh.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'megamind-peeking',
+    name: "Megamind peeking",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/megamind-peeking.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'george-bush-9-11',
+    name: "George Bush 9/11",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/george-bush-9-11.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'pawn-stars-best-i-can-do',
+    name: "Pawn Stars Best I Can Do",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/pawn-stars-best-i-can-do.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'this-is-fine',
+    name: "This Is Fine",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/this-is-fine.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'i-bet-he-s-thinking-about-other-women',
+    name: "I Bet He's Thinking About Other Women",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/i-bet-he-s-thinking-about-other-women.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'bell-curve',
+    name: "Bell Curve",
+    type: 'image',
+    isPremium: false,
+    category: 'Tech',
+    url: '/assets/memes/bell-curve.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'they-don-t-know',
+    name: "They don't know",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/they-don-t-know.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'soldier-protecting-sleeping-child',
+    name: "Soldier protecting sleeping child",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/soldier-protecting-sleeping-child.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'monkey-puppet',
+    name: "Monkey Puppet",
+    type: 'image',
+    isPremium: false,
+    category: 'Trending',
+    url: '/assets/memes/monkey-puppet.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'friendship-ended',
+    name: "Friendship ended",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/friendship-ended.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'two-guys-on-a-bus',
+    name: "Two guys on a bus",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/two-guys-on-a-bus.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'clown-applying-makeup',
+    name: "Clown Applying Makeup",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/clown-applying-makeup.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'imagination-spongebob',
+    name: "Imagination Spongebob",
+    type: 'image',
+    isPremium: false,
+    category: 'Trending',
+    url: '/assets/memes/imagination-spongebob.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'roll-safe-think-about-it',
+    name: "Roll Safe Think About It",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/roll-safe-think-about-it.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'spider-man-triple',
+    name: "Spider Man Triple",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/spider-man-triple.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'boardroom-meeting-suggestion',
+    name: "Boardroom Meeting Suggestion",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/boardroom-meeting-suggestion.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'where-monkey',
+    name: "where monkey",
+    type: 'image',
+    isPremium: false,
+    category: 'Trending',
+    url: '/assets/memes/where-monkey.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'hide-the-pain-harold',
+    name: "Hide the Pain Harold",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/hide-the-pain-harold.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'types-of-headaches-meme',
+    name: "Types of Headaches meme",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/types-of-headaches-meme.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'evil-kermit',
+    name: "Evil Kermit",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/evil-kermit.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'flex-tape',
+    name: "Flex Tape",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/flex-tape.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'all-my-homies-hate',
+    name: "All My Homies Hate",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/all-my-homies-hate.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'you-know-i-m-something-of-a-scientist-myself',
+    name: "You know, I'm something of a scientist myself",
+    type: 'image',
+    isPremium: false,
+    category: 'Tech',
+    url: '/assets/memes/you-know-i-m-something-of-a-scientist-myself.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'three-headed-dragon',
+    name: "Three-headed Dragon",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/three-headed-dragon.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'sleeping-shaq',
+    name: "Sleeping Shaq",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/sleeping-shaq.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'inhaling-seagull',
+    name: "Inhaling Seagull",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/inhaling-seagull.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'a-train-hitting-a-school-bus',
+    name: "A train hitting a school bus",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/a-train-hitting-a-school-bus.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'laughing-leo',
+    name: "Laughing Leo",
+    type: 'image',
+    isPremium: false,
+    category: 'Reaction',
+    url: '/assets/memes/laughing-leo.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'anime-girl-hiding-from-terminator',
+    name: "Anime Girl Hiding from Terminator",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/anime-girl-hiding-from-terminator.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'no-yes',
+    name: "No - Yes",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/no-yes.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'panik-kalm-panik',
+    name: "Panik Kalm Panik",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/panik-kalm-panik.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'aj-styles-undertaker',
+    name: "AJ Styles & Undertaker",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/aj-styles-undertaker.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'scooby-doo-mask-reveal',
+    name: "Scooby doo mask reveal",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/scooby-doo-mask-reveal.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'grant-gustin-over-grave',
+    name: "Grant Gustin over grave",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/grant-gustin-over-grave.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'bad-luck-brian',
+    name: "Bad Luck Brian",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/bad-luck-brian.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'megamind-no-bitches',
+    name: "Megamind no bitches",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/megamind-no-bitches.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'domino-effect',
+    name: "Domino Effect",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/domino-effect.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'spiderman-pointing-at-spiderman',
+    name: "spiderman pointing at spiderman",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/spiderman-pointing-at-spiderman.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'whisper-and-goosebumps',
+    name: "Whisper and Goosebumps",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/whisper-and-goosebumps.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'surprised-pikachu',
+    name: "Surprised Pikachu",
+    type: 'image',
+    isPremium: false,
+    category: 'Trending',
+    url: '/assets/memes/surprised-pikachu.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'third-world-skeptical-kid',
+    name: "Third World Skeptical Kid",
+    type: 'image',
+    isPremium: false,
+    category: 'Reaction',
+    url: '/assets/memes/third-world-skeptical-kid.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'who-killed-hannibal',
+    name: "Who Killed Hannibal",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/who-killed-hannibal.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'grim-reaper-knocking-door',
+    name: "Grim Reaper Knocking Door",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/grim-reaper-knocking-door.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'is-this-butterfly',
+    name: "is this butterfly",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/is-this-butterfly.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'blank-nut-button',
+    name: "Blank Nut Button",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/blank-nut-button.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'star-wars-yoda',
+    name: "Star Wars Yoda",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/star-wars-yoda.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'futurama-fry',
+    name: "Futurama Fry",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/futurama-fry.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'say-the-line-bart-simpsons',
+    name: "say the line bart! simpsons",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/say-the-line-bart-simpsons.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'c-mon-do-something',
+    name: "c'mon do something",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/c-mon-do-something.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'two-paths',
+    name: "Two Paths",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/two-paths.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'grandma-finds-the-internet',
+    name: "Grandma Finds The Internet",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/grandma-finds-the-internet.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'i-m-the-captain-now',
+    name: "I'm The Captain Now",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/i-m-the-captain-now.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'leonardo-dicaprio-cheers',
+    name: "Leonardo Dicaprio Cheers",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/leonardo-dicaprio-cheers.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'drake-blank',
+    name: "Drake Blank",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/drake-blank.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'charlie-conspiracy-always-sunny-in-philidelphia',
+    name: "Charlie Conspiracy (Always Sunny in Philidelphia)",
+    type: 'image',
+    isPremium: false,
+    category: 'Tech',
+    url: '/assets/memes/charlie-conspiracy-always-sunny-in-philidelphia.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'the-scroll-of-truth',
+    name: "The Scroll Of Truth",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/the-scroll-of-truth.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'the-rock-driving',
+    name: "The Rock Driving",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/the-rock-driving.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'whe-i-m-in-a-competition-and-my-opponent-is',
+    name: "whe i'm in a competition and my opponent is",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/whe-i-m-in-a-competition-and-my-opponent-is.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'american-chopper-argument',
+    name: "American Chopper Argument",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/american-chopper-argument.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'wolverine-remember',
+    name: "Wolverine Remember",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/wolverine-remember.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'gus-fring-we-are-not-the-same',
+    name: "Gus Fring we are not the same",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/gus-fring-we-are-not-the-same.png',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
+  },
+  {
+    id: 'trump-bill-signing',
+    name: "Trump Bill Signing",
+    type: 'image',
+    isPremium: false,
+    category: 'Classic',
+    url: '/assets/memes/trump-bill-signing.jpg',
+    topDefault: "WHEN YOU WANT TO MAKE A MEME",
+    bottomDefault: "AND IT TURNS OUT EPIC"
   }
 ];
 
-export const AI_CAPTION_PROMPTS: Record<string, { top: string; bottom: string }[]> = {
+export const CAPTION_PROMPTS: Record<string, { top: string; bottom: string }[]> = {
   humorous: [
     { top: 'MY CODE IS SO CLEAN', bottom: 'EVEN THE BUGS HAVE A GOOD TIME' },
     { top: "I DON'T ALWAYS TEST CODE", bottom: 'BUT WHEN I DO, I DO IT IN PRODUCTION' },
@@ -717,11 +1849,11 @@ export const AI_CAPTION_PROMPTS: Record<string, { top: string; bottom: string }[
     { top: "WHEN YOU SAY 'ONE MORE MINUTE'", bottom: 'AND 4 HOURS PASS ON MEMES' },
     { top: 'ME EXPLAINING TO MY FRIENDS', bottom: 'WHY THIS MEME IS ABSOLUTE ART' },
     { top: 'OPENING 45 BROWSER TABS', bottom: 'FOR A 2-LINE CSS FIX' },
-    { top: 'GOING TO BED AT A REASONABLE HOUR', bottom: 'VS BUILDING A NEW AI MEME SITE' },
+    { top: 'GOING TO BED AT A REASONABLE HOUR', bottom: 'VS MAKING MEMES AT 3 AM' },
     { top: 'WHEN THE WIFI DROPS', bottom: 'AND YOUR MEME IS 99% UPLOADED' }
   ],
   tech: [
-    { top: 'AI GENERATING MEMES AT 60 FPS', bottom: 'THE FUTURE IS HERE, MY FRIENDS' },
+    { top: 'GENERATING CRISP MEMES AT 60 FPS', bottom: 'THE FUTURE IS HERE, MY FRIENDS' },
     { top: 'SENIOR DEV WATCHING JUNIOR', bottom: 'FIX IT WITH ONE LINE OF UTILITY CSS' },
     { top: 'NO BACKEND NEEDED', bottom: '100% IN-BROWSER MEME STUDIO' },
     { top: 'TAILWIND CSS V4 ENGINE', bottom: 'FASTEST MEME RENDERING IN THE WEST' },
@@ -740,3 +1872,5 @@ export const AI_CAPTION_PROMPTS: Record<string, { top: string; bottom: string }[
     { top: 'IT GIVES FREE CONFIDENCE', bottom: 'IT GIVES 100% PRO ENERGY' }
   ]
 };
+
+export const AI_CAPTION_PROMPTS = CAPTION_PROMPTS;

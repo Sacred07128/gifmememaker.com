@@ -1,0 +1,170 @@
+---
+// LanguageSelector component
+---
+
+<div class="relative">
+  <button 
+    id="language-toggle" 
+    aria-label="Select language"
+    aria-expanded="false"
+    aria-haspopup="listbox"
+    class="w-9 h-9 rounded-[6px] border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] text-[#171717] dark:text-white flex items-center justify-center hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] transition-colors"
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+    </svg>
+    <span id="current-lang" class="ml-1.5 text-xs font-medium hidden sm:inline">EN</span>
+    <svg class="w-3.5 h-3.5 ml-1 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <div 
+    id="language-dropdown" 
+    role="listbox" 
+    aria-label="Languages"
+    class="absolute right-0 mt-2 w-36 bg-white dark:bg-[#111111] border border-[#ebebeb] dark:border-[#222222] rounded-xl shadow-lg py-1 opacity-0 invisible transform translate-y-1 transition-all duration-200 z-50"
+  >
+    <button 
+      data-lang="en" 
+      role="option" 
+      class="w-full px-3 py-2 text-left text-sm text-[#171717] dark:text-white hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] flex items-center gap-2"
+    >
+      <span class="font-medium">🇺🇸 English</span>
+    </button>
+    <button 
+      data-lang="es" 
+      role="option" 
+      class="w-full px-3 py-2 text-left text-sm text-[#171717] dark:text-white hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] flex items-center gap-2"
+    >
+      <span class="font-medium">🇪🇸 Español</span>
+    </button>
+    <button 
+      data-lang="fr" 
+      role="option" 
+      class="w-full px-3 py-2 text-left text-sm text-[#171717] dark:text-white hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] flex items-center gap-2"
+    >
+      <span class="font-medium">🇫🇷 Français</span>
+    </button>
+    <button 
+      data-lang="de" 
+      role="option" 
+      class="w-full px-3 py-2 text-left text-sm text-[#171717] dark:text-white hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] flex items-center gap-2"
+    >
+      <span class="font-medium">🇩🇪 Deutsch</span>
+    </button>
+    <button 
+      data-lang="zh" 
+      role="option" 
+      class="w-full px-3 py-2 text-left text-sm text-[#171717] dark:text-white hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] flex items-center gap-2"
+    >
+      <span class="font-medium">🇨🇳 中文</span>
+    </button>
+    <button 
+      data-lang="ja" 
+      role="option" 
+      class="w-full px-3 py-2 text-left text-sm text-[#171717] dark:text-white hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] flex items-center gap-2"
+    >
+      <span class="font-medium">🇯🇵 日本語</span>
+    </button>
+    <button 
+      data-lang="ko" 
+      role="option" 
+      class="w-full px-3 py-2 text-left text-sm text-[#171717] dark:text-white hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] flex items-center gap-2"
+    >
+      <span class="font-medium">🇰🇷 한국어</span>
+    </button>
+    <button 
+      data-lang="pt" 
+      role="option" 
+      class="w-full px-3 py-2 text-left text-sm text-[#171717] dark:text-white hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] flex items-center gap-2"
+    >
+      <span class="font-medium">🇧🇷 Português</span>
+    </button>
+    <button 
+      data-lang="it" 
+      role="option" 
+      class="w-full px-3 py-2 text-left text-sm text-[#171717] dark:text-white hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] flex items-center gap-2"
+    >
+      <span class="font-medium">🇮🇹 Italiano</span>
+    </button>
+    <button 
+      data-lang="ru" 
+      role="option" 
+      class="w-full px-3 py-2 text-left text-sm text-[#171717] dark:text-white hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] flex items-center gap-2"
+    >
+      <span class="font-medium">🇷🇺 Русский</span>
+    </button>
+    <button 
+      data-lang="ar" 
+      role="option" 
+      class="w-full px-3 py-2 text-left text-sm text-[#171717] dark:text-white hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] flex items-center gap-2"
+    >
+      <span class="font-medium">🇸🇦 العربية</span>
+    </button>
+    <button 
+      data-lang="hi" 
+      role="option" 
+      class="w-full px-3 py-2 text-left text-sm text-[#171717] dark:text-white hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] flex items-center gap-2"
+    >
+      <span class="font-medium">🇮🇳 हिन्दी</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  const langToggle = document.getElementById('language-toggle');
+  const langDropdown = document.getElementById('language-dropdown');
+  const currentLang = document.getElementById('current-lang');
+  const langOptions = langDropdown?.querySelectorAll('[data-lang]');
+
+  langToggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = langDropdown?.classList.toggle('opacity-0');
+    langDropdown?.classList.toggle('invisible');
+    langDropdown?.classList.toggle('translate-y-1');
+    langToggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  langOptions?.forEach((option) => {
+    option.addEventListener('click', () => {
+      const lang = option.getAttribute('data-lang');
+      const span = option.querySelector('span');
+      const label = span ? span.textContent || '' : '';
+      if (currentLang) {
+        currentLang.textContent = label.split(' ')[1] || (lang ? lang.toUpperCase() : 'EN');
+      }
+      langDropdown?.classList.add('opacity-0', 'invisible', 'translate-y-1');
+      langToggle?.setAttribute('aria-expanded', 'false');
+      
+      if (lang) {
+        // Store language preference
+        localStorage.setItem('language', lang);
+        
+        // Apply language
+        document.documentElement.lang = lang;
+      }
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!langToggle?.contains(e.target as Node) && !langDropdown?.contains(e.target as Node)) {
+      langDropdown?.classList.add('opacity-0', 'invisible', 'translate-y-1');
+      langToggle?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Load saved language
+  const savedLang = localStorage.getItem('language');
+  if (savedLang) {
+    const savedOption = langDropdown?.querySelector(`[data-lang="${savedLang}"]`);
+    if (savedOption) {
+      const span = savedOption.querySelector('span');
+      const label = span ? span.textContent || '' : '';
+      if (currentLang) {
+        currentLang.textContent = label.split(' ')[1] || savedLang.toUpperCase();
+      }
+      document.documentElement.lang = savedLang;
+    }
+  }
+</script>

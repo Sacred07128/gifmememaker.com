@@ -140,13 +140,14 @@ export class MemeStudio {
       'timeline-scrubber', 'btn-reset-canvas', 'btn-rotate-90', 'btn-flip-h', 'btn-flip-v',
       'input-top-text', 'input-bottom-text', 'select-font-family', 'slider-font-size',
       'lbl-font-size', 'color-text-fill', 'color-text-stroke', 'slider-stroke-width',
-      'chk-caption-banner', 'chk-uppercase', 'chk-text-shadow', 'btn-add-floating-text',
+      'chk-caption-banner', 'chk-uppercase', 'chk-text-shadow', 'btn-add-floating-text', 'btn-remove-floating-text',
       'input-trim-start', 'input-trim-end', 'input-watermark-text', 'select-watermark-pos',
       'slider-wm-opacity', 'lbl-wm-opacity', 'color-bg-fill', 'select-bg-preset',
       'slider-bg-padding', 'lbl-bg-padding', 'res-free', 'res-pro', 'select-fps',
       'select-still-format', 'btn-copy-clipboard', 'btn-export-download',
       'chk-free-only-mode', 'canvas-dim-indicator', 'lbl-ai-left',
-      'pro-modal', 'pro-modal-unlock', 'pro-modal-close'
+      'pro-modal', 'pro-modal-unlock', 'pro-modal-close',
+      'video-file-input', 'btn-video-pro-upload', 'btn-caption-video-tool'
     ]) {
       this.el[id] = $(id);
     }
@@ -183,6 +184,10 @@ export class MemeStudio {
     if (type === 'gif' || url.includes('.gif')) {
       this.loadGifUrl(url);
     } else if (type === 'video' || /\.(mp4|webm|mov|mkv)$/i.test(url)) {
+      if (!(this.pro && !this.freeOnly)) {
+        this.openProModal('Custom video and clip captioning');
+        return;
+      }
       this.loadVideoUrl(url);
     } else {
       this.loadImageUrl(url);
@@ -248,12 +253,22 @@ export class MemeStudio {
   }
 
   async loadFile(file: File) {
-    const url = URL.createObjectURL(file);
-    const isVideo = file.type.startsWith('video/');
+    const isVideo = file.type.startsWith('video/') || /\.(mp4|webm|mov|mkv|avi)$/i.test(file.name);
     const isGif = file.type === 'image/gif' || file.name.toLowerCase().endsWith('.gif');
-    if (isVideo) this.loadVideoUrl(url);
-    else if (isGif) this.loadGifUrl(url);
-    else this.loadImageUrl(url);
+    if (isVideo) {
+      if (!(this.pro && !this.freeOnly)) {
+        this.openProModal('Custom video and clip captioning');
+        return;
+      }
+      const url = URL.createObjectURL(file);
+      this.loadVideoUrl(url);
+    } else if (isGif) {
+      const url = URL.createObjectURL(file);
+      this.loadGifUrl(url);
+    } else {
+      const url = URL.createObjectURL(file);
+      this.loadImageUrl(url);
+    }
   }
 
   private stopMedia() {
@@ -646,7 +661,33 @@ export class MemeStudio {
     });
     this.selectedBox = this.floating.length - 1;
     this.render();
-    this.toast('Drag to move. Double-click canvas text to edit. Empty text deletes it.');
+    this.toast('Drag to move. Double-click canvas text to edit.');
+  }
+
+  removeFloatingText() {
+    if (this.floating.length === 0) {
+      const bot = this.el['input-bottom-text'] as HTMLInputElement | null;
+      const top = this.el['input-top-text'] as HTMLInputElement | null;
+      if (bot && bot.value) {
+        bot.value = '';
+        this.render();
+        this.toast('Bottom text removed');
+      } else if (top && top.value) {
+        top.value = '';
+        this.render();
+        this.toast('Top text removed');
+      } else {
+        this.toast('No text box to remove');
+      }
+      return;
+    }
+    const idx = (this.selectedBox >= 0 && this.selectedBox < this.floating.length)
+      ? this.selectedBox
+      : this.floating.length - 1;
+    this.floating.splice(idx, 1);
+    this.selectedBox = this.floating.length - 1;
+    this.render();
+    this.toast('Text box removed');
   }
 
   private hitTestBox(px: number, py: number): number {
@@ -935,11 +976,11 @@ export class MemeStudio {
     }
   }
 
-  // ---- AI captions ----
+  // ---- Caption generation ----
 
   async generateAiCaption(category: string) {
     if (this.aiUsesLeft <= 0 && !(this.pro && !this.freeOnly)) {
-      this.openProModal('Unlimited AI caption generations');
+      this.openProModal('Unlimited caption ideas');
       return;
     }
     const prompts = AI_CAPTION_PROMPTS[category] || AI_CAPTION_PROMPTS['humorous'];
@@ -950,7 +991,7 @@ export class MemeStudio {
     if (bottom) bottom.value = pick.bottom;
     this.render();
     this.updateAiLeft();
-    this.toast(`AI captions generated (${category})`);
+    this.toast(`Captions generated (${category})`);
   }
 
   private updateAiLeft() {
@@ -1086,11 +1127,47 @@ export class MemeStudio {
     });
 
     (this.el['btn-add-floating-text'] as HTMLElement | null)?.addEventListener('click', () => this.addFloatingText());
+    (this.el['btn-remove-floating-text'] as HTMLElement | null)?.addEventListener('click', () => this.removeFloatingText());
 
     const overlay = this.el['upload-overlay'] as HTMLElement;
     const fileInput = this.el['file-input'] as HTMLInputElement;
-    overlay?.addEventListener('click', () => fileInput?.click());
+    const videoInput = this.el['video-file-input'] as HTMLInputElement;
+
+    // Direct button actions on dropzone
+    document.getElementById('btn-browse-free')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      fileInput?.click();
+    });
+
+    document.getElementById('btn-video-pro-upload')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!(this.pro && !this.freeOnly)) {
+        this.openProModal('Custom video and clip captioning');
+        return;
+      }
+      videoInput?.click();
+    });
+
+    document.getElementById('btn-caption-video-tool')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!(this.pro && !this.freeOnly)) {
+        this.openProModal('Custom video and clip captioning');
+        return;
+      }
+      videoInput?.click();
+    });
+
+    overlay?.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('button, span')) return;
+      fileInput?.click();
+    });
+
     fileInput?.addEventListener('change', (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) void this.loadFile(file);
+    });
+
+    videoInput?.addEventListener('change', (e) => {
       const file = (e.target as HTMLInputElement).files?.[0];
       if (file) void this.loadFile(file);
     });
@@ -1231,6 +1308,12 @@ export class MemeStudio {
       if (e.code === 'Space' && !(e.target instanceof HTMLInputElement) && !(e.target instanceof HTMLSelectElement) && !(e.target instanceof HTMLTextAreaElement)) {
         e.preventDefault();
         this.togglePlay();
+      }
+      if ((e.key === 'Delete' || e.key === 'Backspace') && !(e.target instanceof HTMLInputElement) && !(e.target instanceof HTMLSelectElement) && !(e.target instanceof HTMLTextAreaElement)) {
+        if (this.selectedBox >= 0 && this.selectedBox < this.floating.length) {
+          e.preventDefault();
+          this.removeFloatingText();
+        }
       }
     });
   }

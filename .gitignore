@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# Cloudflare Wrangler state/build files
+.wrangler/
+**/.wrangler/
+
+# System and temporary files
+.DS_Store
+nul
+Thumbs.db
